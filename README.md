@@ -1,5 +1,8 @@
-# APCS2 Final Project
-THIS DOCUMENT IS REQUIRED
-## Group Info
-## Overview
-## Instructions
+# Project Description
+
+lorem ipsum.
+
+# Intended usage:
+
+A description as to how the project will be used (describe the user interface). (CHANGE THIS!!!!!)
+  
