@@ -14,7 +14,8 @@ move like they would in the original game). Personal touches could be concerning
 being "modes". Such modes could be "Floor is Lava" (where certain levels become unbreakable after a certain time) and having new tiles, etc. (updated)
 
 Expanded Description
-Our minimum viable product is a playable tetris that has all the features of a regular tetris game. More specifically, it will not have a time limit and will not have any other tetrimino besides the ones inherently in the game. As for the controls, the left, right, and down arrow keys move the tetrimino left, right and down; the up arrow key moves the piece slowly down, and the space bar hard drops the piece. Furthermore, only one piece can be saved and then later retrieved at a time, with the piece must being used after it is retrieved.  (new)
+Our minimum viable product is a playable tetris that has all the features of a regular tetris game. More specifically, it will not have a time limit and will not have any other tetrimino besides the ones inherently in the game. As for the controls, the left, right, and down arrow keys move the tetrimino left, right and down; the up arrow key moves the piece slowly down, and the space bar hard drops the piece. Furthermore, only one piece can be saved and then later retrieved at a time, with the piece must being used after it is retrieved. 
+After we achieve our MVP, we plan to incorporate various modes and gimmicks into tbe game. As mentioned previously, "the floor is lava" will cause more and more rows to become unclearable, with these rows becoming completely full with red blocks (lava). There will also be random reversals in gravity, as well as the entire board flipping. (new)
 # Project Design
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
