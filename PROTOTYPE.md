@@ -20,7 +20,7 @@ After we achieve our MVP, we plan to incorporate various modes and gimmicks into
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
 
-
+![UML Diagram](FinalTetris.png)
     
 # Intended pacing:
 
