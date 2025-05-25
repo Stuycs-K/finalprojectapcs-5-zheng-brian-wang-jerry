@@ -11,14 +11,13 @@ class Block {
   void drawBlock() {
     fill(c);
     stroke(50);  
-    rect(x * size, y * size, size, size);
+    rect(x - (size / 2.0), y - (size / 2.0), size, size);
   }
 
   
   void move(int dx, int dy) {
-    x += dx;
-    y += dy;
-  }
+    x += dx * size;
+    y += dy * size;
 
   
   Block copy() {
