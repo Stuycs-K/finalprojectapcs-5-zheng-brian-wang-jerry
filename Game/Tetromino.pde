@@ -18,13 +18,13 @@ class Tetromino {
     this.blocks = new Block[4];
     double scale = b_size / 2.0;
     int[][][] offsets = {
-      {{0, -3}, {0, -1}, {0, 1}, {0, 3}},     // I
-      {{0, -2}, {0, 0}, {0, 2}, {-2, 2}},     // L
-      {{0, -2}, {0, 0}, {0, 2}, {2, 2}},      // J
-      {{-1, -1}, {1, -1}, {-1, 1}, {1, 1}},   // O
-      {{-2, -1}, {0, -1}, {0, 1}, {2, 1}},    // S
-      {{2, -1}, {0, -1}, {0, 1}, {-2, 1}},    // Z
-      {{-2, 0}, {0, 0}, {2, 0}, {0, 2}}       // T
+      {{0, -3}, {0, -1}, {0, 1}, {0, 3}},     
+      {{0, -2}, {0, 0}, {0, 2}, {-2, 2}},     
+      {{0, -2}, {0, 0}, {0, 2}, {2, 2}},      
+      {{-1, -1}, {1, -1}, {-1, 1}, {1, 1}},   
+      {{-2, -1}, {0, -1}, {0, 1}, {2, 1}},    
+      {{2, -1}, {0, -1}, {0, 1}, {-2, 1}},    
+      {{-2, 0}, {0, 0}, {2, 0}, {0, 2}}       
     };
     for (int i = 0; i < 4; i++) {
       int dx = offsets[tetrominoType][i][0];
@@ -39,20 +39,19 @@ class Tetromino {
   }
   
   void rotate() {
-    // coordinates of centers of block relative to center
     for (int i = 0; i < blocks.length; i++) {
-      int n_x = blocks[i].x - c_x;
-      int n_y = blocks[i].y - c_y;
-      
-      int temp = n_x;
-      n_x = -n_y;
-      n_y = temp;
-
-      n_x += c_x;
-      n_y += c_y;
+      int dx = (blocks[i].x - c_x) / b_size;
+      int dy = (blocks[i].y - c_y) / b_size;
+  
+      int new_dx = -dy;
+      int new_dy = dx;
+  
+      blocks[i].x = c_x + new_dx * b_size;
+      blocks[i].y = c_y + new_dy * b_size;
     }
-    
   }
+
+
 
   void moveBlocks(int dx, int dy) {
     for (int i = 0; i < blocks.length; i++) {
@@ -68,12 +67,13 @@ class Tetromino {
   }
   
   void moveLeft() {
-    move(1, 0);
+    move(-1, 0);
   }
   
   void moveRight() {
-    move(-1, 0);
+    move(1, 0);
   }
+
   
   void moveDown() {
     move(0, 1);

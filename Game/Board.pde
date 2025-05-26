@@ -21,16 +21,9 @@ class Board{
   }
 
   public void spawnTetro(int x, int y, int type, int c) {
-    Tetromino tetro = new Tetromino(x, y, type, blockLength, c);
-    this.currentTetro = tetro;
-
-    for (int i = 0; i < 4; i++) {
-      Block[] b = tetro.blocks;
-      int x2 = b[i].x / blockLength;
-      int y2 = b[i].y / blockLength; 
-      grid[y2][x2] = b[i];
-    }
+    this.currentTetro = new Tetromino(x, y, type, blockLength, c);
   }
+
 
   public void drawBoard() {
     for (int i = 0; i < boardHeight; i++) {
