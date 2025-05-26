@@ -20,12 +20,12 @@ class Tetromino {
     this.blocks = new Block[4];
     double scale = b_size / 2.0;
     int[][][] offsets = {
-      {{0, -3}, {0 ,-1}, {0, 1}, {0, 3}}, // straight
+      {{0, -2}, {0 ,0}, {0, 2}, {0, 4}}, // straight
       {{0, -2}, {0, 0}, {0, 2}, {-2, 2}}, // L left
       {{0, -2}, {0, 0}, {0, 2}, {2, 2}}, // L right
-      {{-1, -1}, {1 ,-1}, {-1, 1}, {1, 1}}, // square
-      {{-2, -1}, {0 ,-1}, {0, 1}, {2, 1}}, // left zigzag
-      {{2, -1}, {0 ,-1}, {0, 1}, {-2, 1}}, // right zigzag
+      {{-2, 0}, {0 ,0}, {0, 2}, {-2, 2}}, // square
+      {{-2, 0}, {0 ,0}, {0, 2}, {2, 2}}, // left zigzag
+      {{2, 0}, {0 ,0}, {0, 2}, {-2, 2}}, // right zigzag
       {{-2, 0}, {0, 0}, {2, 0}, {0, 2}}, // T shape 
     };
     for (int i = 0; i < 4; i++) {
@@ -41,6 +41,7 @@ class Tetromino {
   }
   
   void rotate() {
+    if (tetrominoType == 3) return;
     for (int i = 0; i < blocks.length; i++) {
     //  System.out.println("Before: " + blocks[i].x + " " + blocks[i].y); 
     //  System.out.println("Center: " + c_x + " " + c_y); 

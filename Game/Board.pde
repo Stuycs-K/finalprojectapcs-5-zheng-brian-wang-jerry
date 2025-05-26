@@ -6,7 +6,7 @@ class Board{
 
 
   Board(){
-    blockLength = 10;
+    blockLength = 50;
     boardWidth = width/blockLength;
     boardHeight = height/blockLength;
     
@@ -30,7 +30,11 @@ class Board{
   }
 
   public void spawnTetro(int type, int c) {
-    this.currentTetro = new Tetromino(grid[1][boardWidth / 2].x, grid[1][boardWidth / 2 ].y, type, blockLength, c, grid);
+    int h = 0;
+    if (type == 0 || type == 1 || type == 2) {
+      h = 1;
+    }
+    this.currentTetro = new Tetromino(grid[h][boardWidth / 2].x, grid[h][boardWidth / 2].y, type, blockLength, c, grid);
     // for (int i = 0; i < 4; i++) {
     //   Block[] b = currentTetro.blocks;
     //   int b_x = b[i].x / blockLength;
