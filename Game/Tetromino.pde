@@ -17,21 +17,21 @@ class Tetromino {
   void initializeBlocks() {
     this.blocks = new Block[4];
     double scale = b_size / 2.0;
-    int[][] offsets = new int[][] {
-      {0, -3}, {0 ,-1}, {0, 1}, {0, 3}, // straight
-      {0, -2}, {0, 0}, {0, 2}, {-2, 2}, // L left
-      {0, -2}, {0, 0}, {0, 2}, {2, 2}, // L right
-      {-1, -1}, {1 ,-1}, {-1, 1}, {1, 1}, // square
-      {-2, -1}, {0 ,-1}, {0, 1}, {2, 1}, // left zigzag
-      {2, -1}, {0 ,-1}, {0, 1}, {-2, 1}, // right zigzag
-      {-2, 0}, {0, 0}, {2, 0}, {0, 2}, // T shape
+    int[][][] offsets = {
+      {{0, -3}, {0, -1}, {0, 1}, {0, 3}},     // I
+      {{0, -2}, {0, 0}, {0, 2}, {-2, 2}},     // L
+      {{0, -2}, {0, 0}, {0, 2}, {2, 2}},      // J
+      {{-1, -1}, {1, -1}, {-1, 1}, {1, 1}},   // O
+      {{-2, -1}, {0, -1}, {0, 1}, {2, 1}},    // S
+      {{2, -1}, {0, -1}, {0, 1}, {-2, 1}},    // Z
+      {{-2, 0}, {0, 0}, {2, 0}, {0, 2}}       // T
     };
     for (int i = 0; i < 4; i++) {
       int dx = offsets[tetrominoType][i][0];
       int dy = offsets[tetrominoType][i][1];
       blocks[i] = new Block(
-        int(c_x + dx * scale),
-        int(c_y + dy * scale),
+        (int)(c_x + dx * scale),
+        (int)(c_y + dy * scale),
         b_size,
         t_color
       );
