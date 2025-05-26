@@ -1,6 +1,7 @@
 class Board{
   Block[][] grid;
-  int boardWidth, boardHeight, blockLength;
+  int boardWidth, boardHeight;
+  int blockLength = 10;
   Tetromino currentTetro;
 
 
@@ -43,12 +44,6 @@ class Board{
 
   public void updateBoard() {
     if (currentTetro == null) return;
-    
-    for (int i = 0; i < boardHeight; i++) {
-      for (int j = 0; j < boardWidth; j++) {
-        currentTetro.moveDown();
-      }
-    }
+    currentTetro.moveDown();
   }
-  
 }
