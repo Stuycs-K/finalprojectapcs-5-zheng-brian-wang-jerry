@@ -15,9 +15,9 @@ class Tetromino {
   }
 
   void initializeBlocks() {
-    this.blocks = new Blocks[4];
+    this.blocks = new Block[4];
     double scale = b_size / 2.0;
-    int[][] offests = new int[][] {
+    int[][] offsets = new int[][] {
       {0, -3}, {0 ,-1}, {0, 1}, {0, 3}, // straight
       {0, -2}, {0, 0}, {0, 2}, {-2, 2}, // L left
       {0, -2}, {0, 0}, {0, 2}, {2, 2}, // L right
@@ -25,12 +25,15 @@ class Tetromino {
       {-2, -1}, {0 ,-1}, {0, 1}, {2, 1}, // left zigzag
       {2, -1}, {0 ,-1}, {0, 1}, {-2, 1}, // right zigzag
       {-2, 0}, {0, 0}, {2, 0}, {0, 2}, // T shape
-    }
+    };
     for (int i = 0; i < 4; i++) {
+      int dx = offsets[tetrominoType][i][0];
+      int dy = offsets[tetrominoType][i][1];
       blocks[i] = new Block(
-        c_x + offsets[tetrominoType][0] * scale,
-        c_y + offsets[tetrominoType][1] * scale,
-        b_size, t_color
+        int(c_x + dx * scale),
+        int(c_y + dy * scale),
+        b_size,
+        t_color
       );
     }
   }
@@ -52,7 +55,7 @@ class Tetromino {
   }
 
   void moveBlocks(int dx, int dy) {
-    for (int i = 0; i < blocks; i++) {
+    for (int i = 0; i < blocks.length; i++) {
       blocks[i].move(dx, dy);
     }
   }
@@ -61,7 +64,7 @@ class Tetromino {
   void move(int dx, int dy) {
     c_x += dx;
     c_y += dy;
-    moveBlocks(dx, dy)
+    moveBlocks(dx, dy);
   }
   
   void moveLeft() {
@@ -77,7 +80,7 @@ class Tetromino {
   }
 
   void drawTetro() {
-    for (int i = 0; i < blocks; i++) {
+    for (int i = 0; i < blocks.length; i++) {
       blocks[i].drawBlock();
     }
   }
