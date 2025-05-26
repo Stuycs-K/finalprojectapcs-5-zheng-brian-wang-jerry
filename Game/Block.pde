@@ -18,7 +18,7 @@ class Block {
   void move(int dx, int dy) {
     x += dx * size;
     y += dy * size;
-
+  }
   
   Block copy() {
     return new Block(x, y, size, c);
