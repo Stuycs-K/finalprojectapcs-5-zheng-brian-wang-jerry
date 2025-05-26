@@ -6,7 +6,9 @@
     size(500, 1000);
     frameRate(60);
     board = new Board();
-    board.spawnTetro((int) random(7), color(random(255), random(255), random(255)));
+    int[][] colors = new int[][] {{0, 255, 255}, {0, 0, 255}, {255, 165, 0}, {255, 255, 0}, {255, 0, 0}, {0, 255, 0}, {255, 0, 255}};
+    int type = (int) random(7);
+    board.spawnTetro(type, color(colors[type][0], colors[type][1], colors[type][2]));
   }
   
   void draw() {
