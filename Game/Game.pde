@@ -6,7 +6,7 @@
     size(300, 600);
     frameRate(60);
     board = new Board();
-    board.spawnTetro(width / 2, 2, int(random(0, 7)), color(random(255), random(255), random(255)));
+    board.spawnTetro(int(random(0, 7)), color(random(255), random(255), random(255)));
   }
   
   void draw() {
