@@ -1,15 +1,12 @@
 class Board{
   Block[][] grid;
-  int boardWidth, boardHeight;
-  int blockLength;
+  int blockLength = 50;
+  int boardWidth = width/blockLength;
+  int boardHeight = height/blockLength; 
   Tetromino currentTetro;
 
 
   Board(){
-    blockLength = 50;
-    boardWidth = width/blockLength;
-    boardHeight = height/blockLength;
-    
     grid = new Block[boardHeight][boardWidth];  
 
     for (int i = 0; i < boardHeight; i++) {
@@ -29,12 +26,21 @@ class Board{
     return true;
   }
 
-  public void spawnTetro(int type, int c) {
+  public void spawnTetro() {
+    int[][] colors = new int[][] {{0, 255, 255}, {0, 0, 255}, {255, 165, 0}, {255, 255, 0}, {255, 0, 0}, {0, 255, 0}, {255, 0, 255}};
+    int type = (int) random(7);
+
     int h = 0;
     if (type == 0 || type == 1 || type == 2) {
       h = 1;
     }
-    this.currentTetro = new Tetromino(grid[h][boardWidth / 2].x, grid[h][boardWidth / 2].y, type, blockLength, c, grid);
+    this.currentTetro = new Tetromino(
+      grid[h][boardWidth / 2].x,
+      grid[h][boardWidth / 2].y,
+      type, blockLength,
+      color(colors[type][0], colors[type][1], colors[type][2]),
+      grid
+    );
     // for (int i = 0; i < 4; i++) {
     //   Block[] b = currentTetro.blocks;
     //   int b_x = b[i].x / blockLength;
@@ -49,7 +55,7 @@ class Board{
     for (int i = 0; i < boardHeight; i++) {
       for (int j = 0; j < boardWidth; j++) {
         if (grid[i][j] != null) {
-          stroke(255);
+          //stroke(255);
           grid[i][j].drawBlock();
         }
       }
@@ -62,6 +68,18 @@ class Board{
 
   public void updateBoard() {
     if (currentTetro == null) return;
-    currentTetro.moveDown();
+    if (!currentTetro.moveDown()) placeDown();
   }
+  
+  public void placeDown() {
+    //if (currentTetro.blocks[3].y >= grid[boardHeight - 1][0].y) {
+      for (int i = 0; i < 4; i++) {
+        int x = (currentTetro.blocks[i].x / blockLength);
+        int y = (currentTetro.blocks[i].y / blockLength);
+        grid[y][x].setColor(currentTetro.blocks[i].c);
+      }
+      spawnTetro();
+    //} 
+  }
+  
 }

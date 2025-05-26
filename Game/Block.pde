@@ -13,6 +13,10 @@ class Block {
     stroke(50);  
     rect(x - (size / 2.0), y - (size / 2.0), size, size);
   }
+  
+  void setColor(int c) {
+    this.c = c;
+  }
 
   
   void move(int dx, int dy) {
