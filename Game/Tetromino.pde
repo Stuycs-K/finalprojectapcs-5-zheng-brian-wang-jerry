@@ -40,14 +40,19 @@ class Tetromino {
   
   void rotate() {
     for (int i = 0; i < blocks.length; i++) {
-      int dx = (blocks[i].x - c_x) / b_size;
-      int dy = (blocks[i].y - c_y) / b_size;
+     System.out.println("Before: " + blocks[i].x + " " + blocks[i].y); 
+     System.out.println("Center: " + c_x + " " + c_y); 
+      int dx = blocks[i].x - c_x;
+      int dy = (blocks[i].y - c_y);
   
       int new_dx = -dy;
       int new_dy = dx;
   
-      blocks[i].x = c_x + new_dx * b_size;
-      blocks[i].y = c_y + new_dy * b_size;
+      blocks[i].x = c_x + new_dx;
+      blocks[i].y = c_y + new_dy;
+
+      System.out.println("After: " + blocks[i].x + " " + blocks[i].y);
+
     }
   }
 
@@ -61,8 +66,8 @@ class Tetromino {
 
   // moves the center of the tetromino
   void move(int dx, int dy) {
-    c_x += dx;
-    c_y += dy;
+    c_x += dx * b_size;
+    c_y += dy * b_size;
     moveBlocks(dx, dy);
   }
   

@@ -22,6 +22,13 @@ class Board{
 
   public void spawnTetro(int x, int y, int type, int c) {
     this.currentTetro = new Tetromino(x, y, type, blockLength, c);
+    // for (int i = 0; i < 4; i++) {
+    //   Block[] b = currentTetro.blocks;
+    //   int b_x = b[i].x / blockLength;
+    //   int b_y = b[i].y / blockLength; 
+    //   System.out.println(b_x + " " + b_y);
+    //   grid[b_y][b_x] = b[i];
+    // }
   }
 
 
@@ -32,6 +39,10 @@ class Board{
           grid[i][j].drawBlock();
         }
       }
+    }
+
+    if (currentTetro != null) {
+      currentTetro.drawTetro();
     }
   }
 
