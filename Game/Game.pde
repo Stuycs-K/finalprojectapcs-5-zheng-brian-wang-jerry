@@ -1,6 +1,6 @@
   Board board;
   int dropCounter = 0; 
-  int dropInterval = 30; 
+  int dropInterval = 100; 
   
   void setup() {
     size(500, 1000);

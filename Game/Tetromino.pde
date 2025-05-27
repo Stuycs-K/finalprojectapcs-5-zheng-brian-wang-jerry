@@ -42,6 +42,10 @@ class Tetromino {
   
   void rotate() {
     if (tetrominoType == 3) return;
+    
+    int[] newXValues = new int[4];
+    int[] newYValues = new int[4];
+    
     for (int i = 0; i < blocks.length; i++) {
     //  System.out.println("Before: " + blocks[i].x + " " + blocks[i].y); 
     //  System.out.println("Center: " + c_x + " " + c_y); 
@@ -50,12 +54,21 @@ class Tetromino {
   
       int new_dx = -dy;
       int new_dy = dx;
-  
-      blocks[i].x = c_x + new_dx;
-      blocks[i].y = c_y + new_dy;
+      
+      int new_x = c_x + new_dx;
+      int new_y = c_y + new_dy;
+      
+      if (new_x < 0 || new_x / b_size >= grid[0].length) return;
+      
+      newXValues[i] = new_x;
+      newYValues[i] = new_y;
 
       // System.out.println("After: " + blocks[i].x + " " + blocks[i].y);
 
+    }
+    for (int i = 0; i < 4; i++) {
+      blocks[i].x = newXValues[i];
+      blocks[i].y = newYValues[i];
     }
   }
 
@@ -66,11 +79,7 @@ class Tetromino {
       
       int x = (blocks[i].x / b_size) + dx;
       int y = (blocks[i].y / b_size) + dy;
-<<<<<<< HEAD
       if (x >= 0 && x < grid[0].length && y < grid.length) {
-=======
-      if (x >= 0 && x < grid[0].length && y < grid.length && y >= 0) {
->>>>>>> 3a3c3e70cce8cb520953a58f038c90308413681b
         if (grid[y][x].c != 0) {
           return false;
         }
