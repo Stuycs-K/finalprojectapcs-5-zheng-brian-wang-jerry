@@ -82,4 +82,8 @@ class Board{
     //} 
   }
   
+  public void clearLine(int row){
+    if (isLineFull(row)){
+      for (int i = 0; i < grid.length; i++){
+        
 }
