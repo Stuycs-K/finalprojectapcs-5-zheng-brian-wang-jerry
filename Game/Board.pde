@@ -18,12 +18,30 @@ class Board{
   }
   
   public boolean isLineFull(int row){
-    for (int i = 0; i < (boardWidth / blockLength); i++){
-      if (grid[row][i] == null){
+    for (int j = 0; j < boardWidth; j++){
+      if (grid[row][j].c == 0){
         return false;
       }
     }
     return true;
+  }
+  
+  public void clearLine(int row) {
+    for (int col = 0; col < boardWidth; col++) {
+      grid[row][col].setColor(0);
+    }
+    for (int i = row-1; i >= 0; i--) {
+      for (int col = 0; col < boardWidth; col++) {
+        grid[i][col].move(0, 1);
+        grid[i+1][col] = grid[i][col].copy();
+        
+      }
+    }
+    
+    for (int col = 0; col < boardWidth; col++) {
+        grid[0][col].move(0, -1);
+        //System.out.println(grid[1][col].y / blockLength);
+    }
   }
 
   public void spawnTetro() {
@@ -66,9 +84,17 @@ class Board{
     }
   }
 
-  public void updateBoard() {
+  public void tetroDown() {
     if (currentTetro == null) return;
     if (currentTetro.moveDown() == 1) placeDown();
+  }
+  
+  public void update() {
+    for (int row = 0; row < boardHeight; row++) {
+      if (isLineFull(row)) {
+        clearLine(row);
+      }
+    }
   }
   
   public void placeDown() {

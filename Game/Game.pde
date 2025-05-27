@@ -13,11 +13,12 @@
     background(0);
   
     if (dropCounter >= dropInterval) {
-      board.updateBoard();
+      board.tetroDown();
       dropCounter = 0;
     }
     dropCounter++;
     //board.placeAtBottom();
+    board.update();
     board.drawBoard();
     
   }
