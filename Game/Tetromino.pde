@@ -66,7 +66,7 @@ class Tetromino {
       
       int x = (blocks[i].x / b_size) + dx;
       int y = (blocks[i].y / b_size) + dy;
-      if (x >= 0 && x < grid[0].length || y < grid.length) {
+      if (x >= 0 && x < grid[0].length && y < grid.length && y >= 0) {
         if (grid[y][x].c != 0) {
           return false;
         }
