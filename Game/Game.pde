@@ -29,7 +29,7 @@
       } else if (keyCode == RIGHT) {
         board.currentTetro.moveRight();
       } else if (keyCode == DOWN) {
-        if (!board.currentTetro.moveDown()) {
+        if (board.currentTetro.moveDown() == 1) {
           board.placeDown();
         }
       } else if (keyCode == UP) {

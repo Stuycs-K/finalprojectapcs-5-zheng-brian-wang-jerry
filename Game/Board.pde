@@ -68,7 +68,7 @@ class Board{
 
   public void updateBoard() {
     if (currentTetro == null) return;
-    if (!currentTetro.moveDown()) placeDown();
+    if (currentTetro.moveDown() == 1) placeDown();
   }
   
   public void placeDown() {

@@ -66,7 +66,7 @@ class Tetromino {
       
       int x = (blocks[i].x / b_size) + dx;
       int y = (blocks[i].y / b_size) + dy;
-      if (x >= 0 && x < grid[0].length || y < grid.length) {
+      if (x >= 0 && x < grid[0].length && y < grid.length) {
         if (grid[y][x].c != 0) {
           return false;
         }
@@ -81,30 +81,30 @@ class Tetromino {
   }
 
   // moves the center of the tetromino
-  boolean move(int dx, int dy) {
+  int move(int dx, int dy) {
     boolean result = moveBlocks(dx, dy);
-    if (result && dy == 1) {
-      return false;
+    if (!result && dy == 1) {
+      return 1;
     }
-    if (result) {
-      return true;
+    if (!result) {
+      return 2;
     }
     c_x += dx * b_size;
     c_y += dy * b_size;
     
-    return true;
+    return 0;
   }
   
   void moveLeft() {
-    move(-1, 0);
+    if (move(-1, 0) == 2) return;
   }
   
   void moveRight() {
-    move(1, 0);
+    if (move(1, 0) == 2) return;
   }
 
   
-  boolean moveDown() {
+  int moveDown() {
     return move(0, 1);
   }
 
