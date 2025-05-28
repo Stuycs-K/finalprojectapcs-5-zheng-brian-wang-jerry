@@ -56,9 +56,9 @@ class Tetromino {
       int new_dy = dx;
       
       int new_x = c_x + new_dx;
-      int new_y = c_y + new_dy;
+      int new_y = c_y + new_dy;      
       
-      if (new_x < 0 || new_x / b_size >= grid[0].length) return;
+        if (new_x < 0 || new_x / b_size >= grid[0].length || grid[new_y/ b_size][new_x/ b_size].c != 0) return;
       
       newXValues[i] = new_x;
       newYValues[i] = new_y;
