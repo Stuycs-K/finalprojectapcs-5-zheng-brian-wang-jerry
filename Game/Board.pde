@@ -42,6 +42,7 @@ class Board{
         grid[0][col].move(0, -1);
         //System.out.println(grid[1][col].y / blockLength);
     }
+    scoreManager.addScore(1);
   }
 
   public void spawnTetro() {
