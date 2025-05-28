@@ -1,24 +1,28 @@
   Board board;
+  ScoreManager scoreManager;
   int dropCounter = 0; 
-  int dropInterval = 30; 
+  int dropInterval = 100; 
   
   void setup() {
     size(500, 1000);
     frameRate(60);
     board = new Board();
     board.spawnTetro();
+    scoreManager = new ScoreManager();
   }
   
   void draw() {
     background(0);
   
     if (dropCounter >= dropInterval) {
-      board.updateBoard();
+      board.tetroDown();
       dropCounter = 0;
     }
     dropCounter++;
     //board.placeAtBottom();
+    board.update();
     board.drawBoard();
+    scoreManager.display();
     
   }
   
