@@ -1,8 +1,11 @@
+import java.util.Queue;
+
 class Board{
   Block[][] grid;
   int blockLength = 50;
   int boardWidth = width/blockLength;
   int boardHeight = height/blockLength; 
+  Queue<Tetromino> next3Tetro;
   Tetromino currentTetro;
   Tetromino heldTetro;
   boolean hasHeld = false;
@@ -48,17 +51,23 @@ class Board{
     scoreManager.addScore(1);
   }
 
-
-  public void spawnTetro() {
+  public void updateNext3Tetro() {
+    if (next3Tetro.size() < 3) {
+      
+      
+    }
+  }
+  
+  public Tetromino makeRandoTetro() {
     int[][] colors = new int[][] {{0, 255, 255}, {0, 0, 255}, {255, 165, 0}, {255, 255, 0}, {255, 0, 0}, {0, 255, 0}, {255, 0, 255}};
     int type = (int) random(7);
     int h = 0;
 
     if (type == 0 || type == 1 || type == 2) {
       h = 1;
-
     }
-    this.currentTetro = new Tetromino(
+    
+    return new Tetromino(
       grid[h][boardWidth / 2].x,
       grid[h][boardWidth / 2].y,
       type, blockLength,
@@ -66,13 +75,11 @@ class Board{
       grid
     );
 
-    // for (int i = 0; i < 4; i++) {
-    //   Block[] b = currentTetro.blocks;
-    //   int b_x = b[i].x / blockLength;
-    //   int b_y = b[i].y / blockLength; 
-    //   System.out.println(b_x + " " + b_y);
-    //   grid[b_y][b_x] = b[i];
-    // }
+  }
+
+  public void spawnTetro() {
+    if (
+    this.currentTetro = makeRandoTetro();
     hasHeld = false;
 
   }
@@ -120,6 +127,7 @@ class Board{
         int y = (currentTetro.blocks[i].y / blockLength);
         grid[y][x].setColor(currentTetro.blocks[i].c);
       }
+      next3Tetro.remove();
       spawnTetro();
     //} 
   }
@@ -139,11 +147,11 @@ class Board{
     col /= blockLength;
     
     int row = max_y + 1;
-    System.out.println("max: "  + max_y + "row: " + row);
+    //System.out.println("max: "  + max_y + "row: " + row);
     while (row < boardHeight && grid[row][col].c == 0) {
       row++;
     }
-    System.out.println("max: "  + max_y + "row: " + row);    
+    //System.out.println("max: "  + max_y + "row: " + row);    
     currentTetro.move(0, row - max_y - 1);
     
     // calculate the lowest block of the tetro
