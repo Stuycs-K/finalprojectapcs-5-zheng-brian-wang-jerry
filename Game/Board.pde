@@ -4,7 +4,7 @@ class Board{
   int blockLength = 50;
   int boardWidth = width/blockLength;
   int boardHeight = height/blockLength; 
-  ArrayList<Tetromino> next3Tetro;
+  ArrayList<Tetromino> upcomingTetro;
   Tetromino currentTetro;
   Tetromino heldTetro;
   boolean hasHeld = false;
@@ -17,10 +17,11 @@ class Board{
         grid[i][j] = new Block((int) ((j+0.5) * blockLength), int ((i+0.5) * blockLength), blockLength, 0);
       }
     }
-    next3Tetro = new ArrayList<Tetromino>();
+    upcomingTetro = new ArrayList<Tetromino>();
     for (int i = 0; i < 3; i++) {
-      next3Tetro.add(makeRandoTetro());
+      upcomingTetro.add(makeRandoTetro());
     }
+    currentTetro = makeRandoTetro();
   }
 
 
@@ -54,13 +55,6 @@ class Board{
     scoreManager.addScore(1);
   }
 
-  public void updateNext3Tetro() {
-    if (next3Tetro.size() < 3) {
-      
-      
-    }
-  }
-  
   public Tetromino makeRandoTetro() {
     int[][] colors = new int[][] {{0, 255, 255}, {0, 0, 255}, {255, 165, 0}, {255, 255, 0}, {255, 0, 0}, {0, 255, 0}, {255, 0, 255}};
     int type = (int) random(7);
@@ -81,12 +75,16 @@ class Board{
   }
 
   public void spawnTetro() {
-    this.currentTetro = makeRandoTetro();
-
-    if (next3Tetro.size() < 3) {
-       next3Tetro.add(currentTetro);
-    }
+    
+    currentTetro = upcomingTetro.remove(0);
+    upcomingTetro.add(makeRandoTetro());
     hasHeld = false;
+    
+    for (int i = 0; i < 3; i++) {
+      System.out.print(upcomingTetro.get(i).tetrominoType + ", ");
+    }
+    System.out.println();
+    
 
   }
 
@@ -133,7 +131,6 @@ class Board{
         int y = (currentTetro.blocks[i].y / blockLength);
         grid[y][x].setColor(currentTetro.blocks[i].c);
       }
-      next3Tetro.remove(0);
       spawnTetro();
     //} 
   }
@@ -187,7 +184,9 @@ class Board{
     hasHeld = true;
   }
   
-  boolean gameOver(){
-    if (isLineFull(0)){
+  //boolean gameOver(){
+  //  if (isLineFull(0)){
+  //  }
+  //}
       
 }

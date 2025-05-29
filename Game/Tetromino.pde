@@ -5,6 +5,8 @@ class Tetromino {
   int tetrominoType;
   Block[][] grid;
   
+  Tetromino(){}
+  
   Tetromino(int c_x, int c_y, int type, int size, int c, Block[][] grid) {
     this.c_x = c_x;
     this.c_y = c_y;

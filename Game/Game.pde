@@ -49,8 +49,8 @@
       if (key == ' ') {
         board.allTheWayDown();
       }
-      else{
-       setup(); 
-      }
+      //else{
+      // setup(); 
+      //}
     } 
   }
