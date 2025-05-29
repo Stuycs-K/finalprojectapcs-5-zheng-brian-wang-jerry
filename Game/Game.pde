@@ -39,7 +39,11 @@
       } else if (keyCode == UP) {
         board.currentTetro.rotate();
       }
-    }
+    } else {
+      if (key == 'c' || key == 'C') {
+        board.lockPiece();
+      }
+    } 
     if (keyPressed) {
       if (key == ' ') board.allTheWayDown();
     }

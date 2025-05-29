@@ -4,6 +4,8 @@ class Board{
   int boardWidth = width/blockLength;
   int boardHeight = height/blockLength; 
   Tetromino currentTetro;
+  Tetromino heldTetro;
+  boolean hasHeld = false;
 
 
   Board(){
@@ -71,6 +73,8 @@ class Board{
     //   System.out.println(b_x + " " + b_y);
     //   grid[b_y][b_x] = b[i];
     // }
+    hasHeld = false;
+
   }
 
 
@@ -145,5 +149,27 @@ class Board{
     // calculate the lowest block of the tetro
     // loop down to nearest row where grid has color
     // move down by the diff
+  }
+  
+  void lockPiece() {
+    if (hasHeld) return;  
+  
+    
+    if (heldTetro == null) {
+      heldTetro = currentTetro;
+      spawnTetro();  
+    } else {
+      Tetromino temp = currentTetro;
+      currentTetro = heldTetro;
+  
+      
+      currentTetro.c_x = grid[1][boardWidth / 2].x;
+      currentTetro.c_y = grid[1][boardWidth / 2].y;
+      currentTetro.initializeBlocks();  
+  
+      heldTetro = temp;
+    }
+  
+    hasHeld = true;
   }
 }
