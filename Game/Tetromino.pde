@@ -79,7 +79,7 @@ class Tetromino {
       
       int x = (blocks[i].x / b_size) + dx;
       int y = (blocks[i].y / b_size) + dy;
-      System.out.println(dy + ", " + x + ", " + y);
+      //System.out.println(dy + ", " + x + ", " + y);
       if (x >= 0 && x < grid[0].length && y < grid.length) {
         if (grid[y][x].c != 0) {
           return false;
@@ -101,7 +101,7 @@ class Tetromino {
       return 1;
     }
     if (!result) {
-      System.out.println(2);
+      //System.out.println(2);
       return 2;
     }
     c_x += dx * b_size;
