@@ -1,6 +1,5 @@
 class ScoreManager {
   int score = 0;
-  int level = 1;
 
   void addScore(int linesCleared) {
     score += linesCleared * 100;

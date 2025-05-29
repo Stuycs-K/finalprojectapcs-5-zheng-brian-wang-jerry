@@ -2,6 +2,8 @@
   ScoreManager scoreManager;
   int dropCounter = 0; 
   int dropInterval = 50;
+  static int level = 0;
+
   
   void setup() {
     size(500, 1000);
@@ -13,6 +15,7 @@
   
   void draw() {
     background(0);
+    frameRate(60 + (level * 20));
   
     if (dropCounter >= dropInterval) {
       board.tetroDown();
