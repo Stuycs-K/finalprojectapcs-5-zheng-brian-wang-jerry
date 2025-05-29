@@ -1,7 +1,7 @@
   Board board;
   ScoreManager scoreManager;
   int dropCounter = 0; 
-  int dropInterval = 100; 
+  int dropInterval = 50;
   
   void setup() {
     size(500, 1000);
@@ -39,5 +39,8 @@
       } else if (keyCode == UP) {
         board.currentTetro.rotate();
       }
+    }
+    if (keyPressed) {
+      if (key == ' ') board.allTheWayDown();
     }
   }
