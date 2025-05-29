@@ -172,4 +172,8 @@ class Board{
   
     hasHeld = true;
   }
+  
+  boolean gameOver(){
+    if (isLineFull(0)){
+      
 }
