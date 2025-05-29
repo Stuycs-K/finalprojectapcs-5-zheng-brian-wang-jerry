@@ -3,6 +3,8 @@
   int dropCounter = 0; 
   int dropInterval = 50;
   static int level = 0;
+  static boolean isGameOver = false;
+
 
   
   void setup() {
@@ -16,6 +18,16 @@
   void draw() {
     background(0);
     frameRate(60 + (level * 20));
+      
+    if (isGameOver) {
+      fill(255, 0, 0);
+      textAlign(CENTER, CENTER);
+      textSize(48);
+      text("GAME OVER", width / 2, height / 2 - 50);
+      textSize(24);
+      text("Press R to Restart", width / 2, height / 2 + 10);
+      return;
+    }
     
   
     if (dropCounter >= dropInterval) {
@@ -52,7 +64,7 @@
       }
       else if (key == 'r' || key == 'R'){
        setup();
-       loop();
+       isGameOver = false;
       }
     } 
   }

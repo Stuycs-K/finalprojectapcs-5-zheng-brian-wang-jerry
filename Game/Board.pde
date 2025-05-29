@@ -84,8 +84,7 @@ class Board{
       int y = b.y / blockLength;
   
       if (grid[y][x].c != 0) {
-        println("Game Over!");
-        noLoop();  
+        isGameOver = true;
         return;
       }
     }

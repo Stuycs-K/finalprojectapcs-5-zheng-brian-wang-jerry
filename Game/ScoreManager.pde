@@ -13,6 +13,7 @@ class ScoreManager {
   void display() {
     fill(255);
     textSize(16);
+    textAlign(LEFT, BASELINE);
     text("Score: " + score, 10, 20);
     text("Level: " + level, 10, 40);
   }
