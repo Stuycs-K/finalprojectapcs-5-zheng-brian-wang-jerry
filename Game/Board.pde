@@ -1,4 +1,3 @@
-
 class Board{
   Block[][] grid;
   int blockLength = 50;
@@ -184,9 +183,13 @@ class Board{
     hasHeld = true;
   }
   
-  //boolean gameOver(){
-  //  if (isLineFull(0)){
-  //  }
-  //}
-      
+  boolean gameOver(){
+    for (int j = 0; j < boardWidth; j++){
+      if (grid[0][j].c == 0 ){
+        return true;
+      }
+    }
+    return false;
+  }
+  
 }

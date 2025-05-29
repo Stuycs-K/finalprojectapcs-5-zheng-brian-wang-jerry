@@ -16,6 +16,10 @@
   void draw() {
     background(0);
     frameRate(60 + (level * 20));
+    
+    if (board.gameOver()){
+      setup();
+    }
   
     if (dropCounter >= dropInterval) {
       board.tetroDown();
@@ -49,8 +53,8 @@
       if (key == ' ') {
         board.allTheWayDown();
       }
-      //else{
-      // setup(); 
-      //}
+      else if (key == 'r' || key == 'R'){
+       setup(); 
+      }
     } 
   }
