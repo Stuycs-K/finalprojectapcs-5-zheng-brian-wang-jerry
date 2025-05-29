@@ -46,8 +46,11 @@
       if (key == 'c' || key == 'C') {
         board.lockPiece();
       }
+      if (key == ' ') {
+        board.allTheWayDown();
+      }
+      else{
+       setup(); 
+      }
     } 
-    if (keyPressed) {
-      if (key == ' ') board.allTheWayDown();
-    }
   }
