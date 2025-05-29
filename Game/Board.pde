@@ -1,11 +1,10 @@
-import java.util.Queue;
 
 class Board{
   Block[][] grid;
   int blockLength = 50;
   int boardWidth = width/blockLength;
   int boardHeight = height/blockLength; 
-  Queue<Tetromino> next3Tetro;
+  ArrayList<Tetromino> next3Tetro;
   Tetromino currentTetro;
   Tetromino heldTetro;
   boolean hasHeld = false;
@@ -17,6 +16,10 @@ class Board{
       for (int j = 0; j < boardWidth; j++) {
         grid[i][j] = new Block((int) ((j+0.5) * blockLength), int ((i+0.5) * blockLength), blockLength, 0);
       }
+    }
+    next3Tetro = new ArrayList<Tetromino>();
+    for (int i = 0; i < 3; i++) {
+      next3Tetro.add(makeRandoTetro());
     }
   }
 
@@ -78,8 +81,11 @@ class Board{
   }
 
   public void spawnTetro() {
-    if (
     this.currentTetro = makeRandoTetro();
+
+    if (next3Tetro.size() < 3) {
+       next3Tetro.add(currentTetro);
+    }
     hasHeld = false;
 
   }
@@ -127,7 +133,7 @@ class Board{
         int y = (currentTetro.blocks[i].y / blockLength);
         grid[y][x].setColor(currentTetro.blocks[i].c);
       }
-      next3Tetro.remove();
+      next3Tetro.remove(0);
       spawnTetro();
     //} 
   }
