@@ -79,6 +79,17 @@ class Board{
     upcomingTetro.add(makeRandoTetro());
     hasHeld = false;
     
+    for (Block b : currentTetro.blocks) {
+      int x = b.x / blockLength;
+      int y = b.y / blockLength;
+  
+      if (grid[y][x].c != 0) {
+        println("Game Over!");
+        noLoop();  
+        return;
+      }
+    }
+    
     for (int i = 0; i < 3; i++) {
       System.out.print(upcomingTetro.get(i).tetrominoType + ", ");
     }
@@ -181,15 +192,6 @@ class Board{
     }
   
     hasHeld = true;
-  }
-  
-  boolean gameOver(){
-    for (int j = 0; j < boardWidth; j++){
-      if (grid[0][j].c == 0 ){
-        return true;
-      }
-    }
-    return false;
   }
   
 }

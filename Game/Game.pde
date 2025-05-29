@@ -17,9 +17,6 @@
     background(0);
     frameRate(60 + (level * 20));
     
-    if (board.gameOver()){
-      setup();
-    }
   
     if (dropCounter >= dropInterval) {
       board.tetroDown();
@@ -30,7 +27,7 @@
     board.update();
     board.drawBoard();
     scoreManager.display();
-    
+     
   }
   
   void keyPressed() {
@@ -54,7 +51,8 @@
         board.allTheWayDown();
       }
       else if (key == 'r' || key == 'R'){
-       setup(); 
+       setup();
+       loop();
       }
     } 
   }
