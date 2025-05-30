@@ -3,6 +3,8 @@
   int dropCounter = 0; 
   int dropInterval = 50;
   static int level = 0;
+  static boolean isGameOver = false;
+
 
   
   void setup() {
@@ -19,10 +21,17 @@
     //  dropInterval *= 0.9;
     //}
     frameRate(60 + (level * 20));
-    
-    if (board.gameOver()){
-      setup();
+      
+    if (isGameOver) {
+      fill(255, 0, 0);
+      textAlign(CENTER, CENTER);
+      textSize(48);
+      text("GAME OVER", width / 2, height / 2 - 50);
+      textSize(24);
+      text("Press R to Restart", width / 2, height / 2 + 10);
+      return;
     }
+    
   
     if (dropCounter >= dropInterval) {
       board.tetroDown();
@@ -33,7 +42,7 @@
     board.update();
     board.drawBoard();
     scoreManager.display();
-    
+     
   }
   
   void keyPressed() {
@@ -57,7 +66,8 @@
         board.allTheWayDown();
       }
       else if (key == 'r' || key == 'R'){
-       setup(); 
+       setup();
+       isGameOver = false;
       }
     } 
   }
