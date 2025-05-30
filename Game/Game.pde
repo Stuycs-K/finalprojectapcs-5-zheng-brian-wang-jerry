@@ -15,6 +15,9 @@
   
   void draw() {
     background(0);
+    //for (int i = 0; i < level; i++) {
+    //  dropInterval *= 0.9;
+    //}
     frameRate(60 + (level * 20));
     
     if (board.gameOver()){

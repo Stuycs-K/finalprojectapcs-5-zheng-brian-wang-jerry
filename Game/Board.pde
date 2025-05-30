@@ -185,7 +185,7 @@ class Board{
   
   boolean gameOver(){
     for (int j = 0; j < boardWidth; j++){
-      if (grid[0][j].c == 0 ){
+      if (grid[0][j].c != 0 ){
         return true;
       }
     }
