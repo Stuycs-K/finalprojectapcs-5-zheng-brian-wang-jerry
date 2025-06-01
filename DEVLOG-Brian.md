@@ -61,6 +61,11 @@ Was fixing game over logic, but it was already fixed in the latest commit. Fixed
 ### 2025-05-31 - Disabled pressing R to start new game during game. Updated allTheWayDown() logic
 When r or R is pressed, whether isGameOver is true is checked before proceeding. allTheWayDown() simply calls moveDown() until it returns a 1. - 20 min
 
+### 2025-05-31 - MVP is done, merged MVP into main
+git checkout main
+git merge --no-ff MVP
+- 5 min
+
 
 
 
