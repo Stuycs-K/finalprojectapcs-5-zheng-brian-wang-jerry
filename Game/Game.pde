@@ -65,7 +65,7 @@
       if (key == ' ') {
         board.allTheWayDown();
       }
-      else if (key == 'r' || key == 'R'){
+      else if (key == 'r' || key == 'R' && isGameOver){
        setup();
        isGameOver = false;
       }

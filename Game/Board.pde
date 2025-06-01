@@ -145,30 +145,31 @@ class Board{
   }
   
   void allTheWayDown() {
-    //while (currentTetro.moveDown() != 1);
-    int max_y = -1;
-    int col = 0;
+    while (currentTetro.moveDown() != 1);
+    tetroDown();
+    // int max_y = -1;
+    // int col = 0;
     
-    for (int i = 0; i < 4; i++) {
-      if (max_y < currentTetro.blocks[i].y) {
-        max_y = currentTetro.blocks[i].y;
-        col = currentTetro.blocks[i].x;
-      }
-    }
-    max_y /= blockLength;
-    col /= blockLength;
+    // for (int i = 0; i < 4; i++) {
+    //   if (max_y < currentTetro.blocks[i].y) {
+    //     max_y = currentTetro.blocks[i].y;
+    //     col = currentTetro.blocks[i].x;
+    //   }
+    // }
+    // max_y /= blockLength;
+    // col /= blockLength;
     
-    int row = max_y + 1;
-    //System.out.println("max: "  + max_y + "row: " + row);
-    while (row < boardHeight && grid[row][col].c == 0) {
-      row++;
-    }
-    //System.out.println("max: "  + max_y + "row: " + row);    
-    currentTetro.move(0, row - max_y - 1);
+    // int row = max_y + 1;
+    // //System.out.println("max: "  + max_y + "row: " + row);
+    // while (row < boardHeight && grid[row][col].c == 0) {
+    //   row++;
+    // }
+    // //System.out.println("max: "  + max_y + "row: " + row);    
+    // currentTetro.move(0, row - max_y - 1);
     
-    // calculate the lowest block of the tetro
-    // loop down to nearest row where grid has color
-    // move down by the diff
+    // // calculate the lowest block of the tetro
+    // // loop down to nearest row where grid has color
+    // // move down by the diff
   }
   
   void lockPiece() {
