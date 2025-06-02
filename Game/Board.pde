@@ -89,10 +89,10 @@ class Board{
       }
     }
     
-    for (int i = 0; i < 3; i++) {
-      System.out.print(upcomingTetro.get(i).tetrominoType + ", ");
-    }
-    System.out.println();
+    //for (int i = 0; i < 3; i++) {
+    //  System.out.print(upcomingTetro.get(i).tetrominoType + ", ");
+    //}
+    //System.out.println();
     
 
   }
