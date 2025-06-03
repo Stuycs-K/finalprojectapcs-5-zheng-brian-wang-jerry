@@ -4,6 +4,7 @@ class Board{
   int boardWidth = width/blockLength;
   int boardHeight = height/blockLength; 
   ArrayList<Tetromino> upcomingTetro;
+  Block[][] displayUpcomingTetro;
   Tetromino currentTetro;
   Tetromino heldTetro;
   boolean hasHeld = false;
@@ -13,7 +14,10 @@ class Board{
     grid = new Block[boardHeight][boardWidth];  
     for (int i = 0; i < boardHeight; i++) {
       for (int j = 0; j < boardWidth; j++) {
-        grid[i][j] = new Block((int) ((j+0.5) * blockLength), int ((i+0.5) * blockLength), blockLength, 0);
+        int c = 0;
+        // if (j == 10) c = color(255, 255, 255);
+        if (j >= 10) c = color(211, 211, 211);
+        grid[i][j] = new Block((int) ((j+0.5) * blockLength), int ((i+0.5) * blockLength), blockLength, c);
       }
     }
     upcomingTetro = new ArrayList<Tetromino>();
@@ -64,8 +68,8 @@ class Board{
     }
     
     return new Tetromino(
-      grid[h][boardWidth / 2].x,
-      grid[h][boardWidth / 2].y,
+      grid[h][500 / 2 / blockLength].x,
+      grid[h][500 / 2 / blockLength].y,
       type, blockLength,
       color(colors[type][0], colors[type][1], colors[type][2]),
       grid
@@ -114,6 +118,20 @@ class Board{
 
     if (currentTetro != null) {
       currentTetro.drawTetro();
+    }
+    stroke(color(255, 255, 255));
+    strokeWeight(10);
+    
+    line(10 * blockLength, 0, 10*blockLength, boardHeight * blockLength);
+    strokeWeight(1);
+
+    for (int i = 0; i < 3; i++) {
+      Tetromino current = upcomingTetro.get(i); 
+      for (int j = 0; j < 4; j++) {
+        Block bCopy = current.blocks[j].copy();
+        bCopy.move(7, 5*i);
+        bCopy.drawBlock();
+      }
     }
   }
 

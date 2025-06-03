@@ -9,8 +9,12 @@ class Block {
   }
   
   void drawBlock() {
+    strokeWeight(1);
+    int strokeC = 50;
+    // if (x / size == 10) strokeWeight(10);
+    if (x / size >= 10) strokeC = color(181, 181, 181);
     fill(c);
-    stroke(50);  
+    stroke(strokeC);  
     rect(x - (size / 2.0), y - (size / 2.0), size, size);
   }
   
