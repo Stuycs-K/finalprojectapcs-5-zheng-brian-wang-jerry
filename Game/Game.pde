@@ -12,7 +12,6 @@
     frameRate(60);
     board = new Board();
     board.spawnTetro();
-    scoreManager = new ScoreManager(board);
   }
   
   void draw() {
