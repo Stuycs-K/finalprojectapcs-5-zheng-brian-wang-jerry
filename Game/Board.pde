@@ -7,6 +7,8 @@ class Board{
   Tetromino currentTetro;
   Tetromino heldTetro;
   boolean hasHeld = false;
+  int grayRows = 0;
+
 
 
   Board(){
@@ -48,7 +50,7 @@ class Board{
     }
 
     for (int col = 0; col < boardWidth; col++) {
-        grid[0][col].move(0, -1);
+        grid[grayRows][col].move(0, -1);
         //System.out.println(grid[1][col].y / blockLength);
     }
     scoreManager.addScore(1);

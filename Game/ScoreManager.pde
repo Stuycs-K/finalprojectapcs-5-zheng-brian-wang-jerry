@@ -1,9 +1,18 @@
 class ScoreManager {
   int score = 0;
+  
+  
+  ScoreManager(Board board) {
+    this.board = board;
+  }
 
   void addScore(int linesCleared) {
     score += linesCleared * 100;
     level = 1 + score / 500;
+    
+    if (level > prevLevel) {
+      board.addGrayRow();  
+    }
   }
 
   int getLevel() {
