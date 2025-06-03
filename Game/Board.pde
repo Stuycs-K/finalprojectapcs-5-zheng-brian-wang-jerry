@@ -115,6 +115,15 @@ class Board{
 
   }
 
+  public void drawBorders() {
+    stroke(color(255, 255, 255));
+    strokeWeight(10);
+    
+    line(10 * blockLength, 0, 10*blockLength, boardHeight * blockLength);
+
+    line(10*blockLength, 15*blockLength, 14*blockLength, 15*blockLength);
+    strokeWeight(1);
+  }
 
 
 
@@ -129,6 +138,7 @@ class Board{
       }
     }
 
+
     allDownAndHighlight(false);
 
 
@@ -137,23 +147,39 @@ class Board{
       currentTetro.drawTetro();
     }
 
+    drawBorders();
 
 
-    stroke(color(255, 255, 255));
-    strokeWeight(10);
+
+
     
-    line(10 * blockLength, 0, 10*blockLength, boardHeight * blockLength);
-    strokeWeight(1);
 
+    int y = 1;
+    int offset = 4;
 
     for (int i = 0; i < 3; i++) {
       Tetromino current = upcomingTetro.get(i); 
+      int type = current.tetrominoType;
+      if (type == 0) offset = 6;
+
       for (int j = 0; j < 4; j++) {
         Block bCopy = current.blocks[j].copy();
-        bCopy.move(7, 1 + 5*i);
+        bCopy.move(7, y);
         bCopy.drawBlock();
       }
+
+      y+=offset;
+
     }
+
+    for (int j = 0; j < 4; j++) {
+        if (heldTetro != null) {
+          Block heldCopy = heldTetro.blocks[j].copy();
+          heldCopy.move(7, 16);
+          heldCopy.drawBlock();
+        }
+        
+      }
 
 
   }

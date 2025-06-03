@@ -26,20 +26,11 @@ class Block {
         float g = green(c);
         float b = blue(c);
 
-        r -= (255 - r) / 1.4;
-        g -= (255 - g) / 1.4;
-        b -= (255 - b) / 1.4; 
+        r *= (1.0 / 1.5);
+        g *= (1.0 / 1.5);
+        b *= (1.0 / 1.5); 
 
-        r+=256;
-        g+=256;
-        b+=256;
-
-
-        r%=256;
-        g%=256;
-        b%=256;
-
-        System.out.println(r + ", " + g + ", " + b);
+        // System.out.println(r + ", " + g + ", " + b);
         strokeC = color(r, g, b);
       }
       else strokeC = color(211, 211, 211);
