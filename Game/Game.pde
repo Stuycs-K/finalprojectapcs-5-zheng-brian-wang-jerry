@@ -63,7 +63,7 @@
         board.lockPiece();
       }
       if (key == ' ') {
-        board.allTheWayDown();
+        board.allDownAndHighlight(true);
       }
       else if (isGameOver && key == 'r' || key == 'R'){
        setup();

@@ -66,7 +66,8 @@ git checkout main
 git merge --no-ff MVP
 - 5 min
 
-
+### 2025-06-02 - Wrote code to display next 3 tetro
+Changed the window size from 500x1000 to 700x1000. Looped through the tetro of upComingTetro in drawBoard(), and drew them in that newly created right hand section by moving them right and (if necessary) down. Assigned blocks in grid a color if j >= 10 to make the right hand section apparent, and drew a thick line down x=500 to act as a border. - 35 min
 
 
 

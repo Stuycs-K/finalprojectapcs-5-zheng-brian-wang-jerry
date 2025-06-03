@@ -119,11 +119,16 @@ class Board{
     if (currentTetro != null) {
       currentTetro.drawTetro();
     }
+
+    allDownAndHighlight(false);
+
+
     stroke(color(255, 255, 255));
     strokeWeight(10);
     
     line(10 * blockLength, 0, 10*blockLength, boardHeight * blockLength);
     strokeWeight(1);
+
 
     for (int i = 0; i < 3; i++) {
       Tetromino current = upcomingTetro.get(i); 
@@ -133,6 +138,8 @@ class Board{
         bCopy.drawBlock();
       }
     }
+
+
   }
 
 
@@ -161,10 +168,37 @@ class Board{
       spawnTetro();
     //} 
   }
+
+
   
-  void allTheWayDown() {
-    while (currentTetro.moveDown() != 1);
-    tetroDown();
+  void allDownAndHighlight(boolean placeDown) {
+    Tetromino tetroCopy = currentTetro.copy();
+    tetroCopy.setHighlight(true);
+
+    int c = tetroCopy.t_color;
+    float r = red(c);
+    float g = green(c);
+    float b = blue(c);
+
+    r += (255 - r) / 1.2;
+    g += (255 - g) / 1.2;
+    b += (255 - b) / 1.2;
+
+    r%=256;
+    g%=256;
+    b%=256;
+
+    tetroCopy.setColor(color(r, g, b));
+    tetroCopy.initializeBlocks();
+
+    while (tetroCopy.moveDown() != 1);
+    tetroCopy.drawTetro();
+    
+
+    if (placeDown) {
+      while (currentTetro.moveDown() != 1);
+      tetroDown();
+    }
     // int max_y = -1;
     // int col = 0;
     
@@ -202,8 +236,8 @@ class Board{
       currentTetro = heldTetro;
   
       
-      currentTetro.c_x = grid[1][boardWidth / 2].x;
-      currentTetro.c_y = grid[1][boardWidth / 2].y;
+      currentTetro.c_x = grid[1][5].x;
+      currentTetro.c_y = grid[1][5].y;
       currentTetro.initializeBlocks();  
   
       heldTetro = temp;

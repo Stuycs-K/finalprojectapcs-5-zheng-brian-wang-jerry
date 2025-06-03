@@ -4,6 +4,7 @@ class Tetromino {
   int t_color, b_size;
   int tetrominoType;
   Block[][] grid;
+  boolean highlight;
   
   Tetromino(){}
   
@@ -14,6 +15,7 @@ class Tetromino {
     this.b_size = size;
     this.tetrominoType = type;
     this.grid = grid;
+    this.highlight = false;
 
     initializeBlocks();
   }
@@ -131,6 +133,17 @@ class Tetromino {
     }
   }
   
+  Tetromino copy() {
+    return new Tetromino(c_x, c_y, tetrominoType, b_size, t_color, grid);
+  }
+
+  void setHighlight(boolean value) {
+    this.highlight = value;
+  }
+
+  void setColor(int c) {
+    this.t_color = c;
+  }
   
   
 }
