@@ -195,24 +195,24 @@ class Board{
 
     while (tetroCopy.moveDown() != 1);
 
-    int c = tetroCopy.t_color;
-    float r = red(c);
-    float g = green(c);
-    float b = blue(c);
+    // int c = tetroCopy.t_color;
+    // float r = red(c);
+    // float g = green(c);
+    // float b = blue(c);
 
-    r += (255 - r) / 1.3;
-    g += (255 - g) / 1.3;
-    b += (255 - b) / 1.3;
+    // r += (255 - r) / 1.4;
+    // g += (255 - g) / 1.4;
+    // b += (255 - b) / 1.4;
 
-    r%=256;
-    g%=256;
-    b%=256;
+    // r%=256;
+    // g%=256;
+    // b%=256;
 
     for (Block block : tetroCopy.blocks) {
       // Block gridPos = grid[block.y / blockLength][block.x / blockLength];
       // gridPos.setHighlight(true);
       // gridPos.c = color(r, g, b);
-      block.c = color(r, g, b);
+      block.c = 0;
       block.setHighlight(true);
     }
 
