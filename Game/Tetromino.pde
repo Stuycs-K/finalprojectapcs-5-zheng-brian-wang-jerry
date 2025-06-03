@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 class Tetromino {
   Block[] blocks;
   int c_x, c_y;
@@ -6,7 +8,6 @@ class Tetromino {
   Block[][] grid;
   boolean highlight;
   
-  Tetromino(){}
   
   Tetromino(int c_x, int c_y, int type, int size, int c, Block[][] grid) {
     this.c_x = c_x;
@@ -19,6 +20,7 @@ class Tetromino {
 
     initializeBlocks();
   }
+ 
 
   void initializeBlocks() {
     this.blocks = new Block[4];
@@ -41,6 +43,7 @@ class Tetromino {
         b_size,
         t_color
       );
+      
     }
   }
   
@@ -108,8 +111,8 @@ class Tetromino {
       //System.out.println(2);
       return 2;
     }
-    c_x += dx * b_size;
-    c_y += dy * b_size;
+    this.c_x += dx * b_size;
+    this.c_y += dy * b_size;
     
     return 0;
   }
@@ -143,6 +146,12 @@ class Tetromino {
 
   void setColor(int c) {
     this.t_color = c;
+  }
+  
+  void setBlocks(Block[] b) {
+    for (int i = 0; i < 4; i++) {
+      this.blocks[i] = b[i].copy();
+    }
   }
   
   

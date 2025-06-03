@@ -14,7 +14,7 @@ class Block {
     strokeWeight(1);
     int strokeC = 50;
     // if (x / size == 10) strokeWeight(10);
-    if (highlight) strokeC = color(150, 150, 150);
+    if (highlight) strokeC = color(210, 210, 210);
     else if (x / size >= 10) strokeC = color(181, 181, 181);
     fill(c);
     stroke(strokeC);  

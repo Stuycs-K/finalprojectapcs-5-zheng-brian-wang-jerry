@@ -115,12 +115,14 @@ class Board{
       }
     }
 
+    allDownAndHighlight(false);
+
+
 
     if (currentTetro != null) {
       currentTetro.drawTetro();
     }
 
-    allDownAndHighlight(false);
 
 
     stroke(color(255, 255, 255));
@@ -173,26 +175,37 @@ class Board{
   
   void allDownAndHighlight(boolean placeDown) {
     Tetromino tetroCopy = currentTetro.copy();
-    tetroCopy.setHighlight(true);
+
+    tetroCopy.setBlocks(currentTetro.blocks);
+
+
+    while (tetroCopy.moveDown() != 1);
 
     int c = tetroCopy.t_color;
     float r = red(c);
     float g = green(c);
     float b = blue(c);
 
-    r += (255 - r) / 1.2;
-    g += (255 - g) / 1.2;
-    b += (255 - b) / 1.2;
+    r += (255 - r) / 1.25;
+    g += (255 - g) / 1.25;
+    b += (255 - b) / 1.25;
 
     r%=256;
     g%=256;
     b%=256;
 
-    tetroCopy.setColor(color(r, g, b));
-    tetroCopy.initializeBlocks();
+    for (Block block : tetroCopy.blocks) {
+      // Block gridPos = grid[block.y / blockLength][block.x / blockLength];
+      // gridPos.setHighlight(true);
+      // gridPos.c = color(r, g, b);
+      block.c = color(r, g, b);
+      block.setHighlight(true);
+    }
 
-    while (tetroCopy.moveDown() != 1);
     tetroCopy.drawTetro();
+
+
+    
     
 
     if (placeDown) {

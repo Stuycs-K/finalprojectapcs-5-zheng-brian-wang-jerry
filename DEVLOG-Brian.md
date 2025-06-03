@@ -69,6 +69,8 @@ git merge --no-ff MVP
 ### 2025-06-02 - Wrote code to display next 3 tetro
 Changed the window size from 500x1000 to 700x1000. Looped through the tetro of upComingTetro in drawBoard(), and drew them in that newly created right hand section by moving them right and (if necessary) down. Assigned blocks in grid a color if j >= 10 to make the right hand section apparent, and drew a thick line down x=500 to act as a border. - 35 min
 
+### 2025-06-02 - Displayed outline of where tetro will go
+Made a copy of the currentTetro and moved that copy all the way down. This tetroCopy was drawn using lighter colors and border. A highlight instance variable needed to be added to Block for a lighter outline, and setBlocks() was created for Tetro to make sure tetroCopy followed rotations. - 45 min
 
 
 
