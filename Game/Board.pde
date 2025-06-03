@@ -3,11 +3,15 @@ class Board{
   int blockLength = 50;
   int boardWidth = width/blockLength;
   int boardHeight = height/blockLength; 
+
+  ArrayList<Integer> tetroTypes;
+
   ArrayList<Tetromino> upcomingTetro;
-  Block[][] displayUpcomingTetro;
+  // Block[][] displayUpcomingTetro;
   Tetromino currentTetro;
   Tetromino heldTetro;
   boolean hasHeld = false;
+
 
 
   Board(){
@@ -20,11 +24,14 @@ class Board{
         grid[i][j] = new Block((int) ((j+0.5) * blockLength), int ((i+0.5) * blockLength), blockLength, c);
       }
     }
+    tetroTypes = new ArrayList<Integer>();
+
+
     upcomingTetro = new ArrayList<Tetromino>();
     for (int i = 0; i < 3; i++) {
       upcomingTetro.add(makeRandoTetro());
     }
-    currentTetro = makeRandoTetro();
+    // currentTetro = makeRandoTetro();
   }
 
 
@@ -60,7 +67,14 @@ class Board{
 
   public Tetromino makeRandoTetro() {
     int[][] colors = new int[][] {{0, 255, 255}, {0, 0, 255}, {255, 165, 0}, {255, 255, 0}, {255, 0, 0}, {0, 255, 0}, {255, 0, 255}};
-    int type = (int) random(7);
+    if (tetroTypes.size() == 0) {
+      for (int i = 0; i < 7; i++) {
+        tetroTypes.add(i);
+      }
+    }
+    int rand = (int) (Math.random() * tetroTypes.size());
+    // System.out.println(tetroTypes.get(rand));
+    int type = tetroTypes.remove(rand);
     int h = 0;
 
     if (type == 0 || type == 1 || type == 2) {
@@ -136,7 +150,7 @@ class Board{
       Tetromino current = upcomingTetro.get(i); 
       for (int j = 0; j < 4; j++) {
         Block bCopy = current.blocks[j].copy();
-        bCopy.move(7, 5*i);
+        bCopy.move(7, 1 + 5*i);
         bCopy.drawBlock();
       }
     }
@@ -186,9 +200,9 @@ class Board{
     float g = green(c);
     float b = blue(c);
 
-    r += (255 - r) / 1.25;
-    g += (255 - g) / 1.25;
-    b += (255 - b) / 1.25;
+    r += (255 - r) / 1.3;
+    g += (255 - g) / 1.3;
+    b += (255 - b) / 1.3;
 
     r%=256;
     g%=256;
