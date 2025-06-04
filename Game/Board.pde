@@ -309,6 +309,10 @@ class Board{
       }
     }
     
+  for (int col = 0; col < 10; col++) {
+    grid[0][col] = new Block(col * blockLength, 0, blockLength, 0); 
+  }
+    
     for (int col = 0; col < 10; col++) {
       grid[grid.length - row][col].setColor(128);
     }
