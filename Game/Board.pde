@@ -300,9 +300,18 @@ class Board{
   }
   
   void grayRow(int n){
-   for (int i = grid.length - 1; i > grayRows; i--){
-    for (int col = 0; col < boardWidth; col++) {
-      grid[i][col].setColor(GRAY);
+    for (int row = 0; row < boardHeight - n; row++) {
+      for (int col = 0; col < boardWidth; col++) {
+        grid[row][col].setColor(grid[row + n][col].c);
+      }
     }
+  
+    for (int row = boardHeight - n; row < boardHeight; row++) {
+      for (int col = 0; col < boardWidth; col++) {
+        grid[row][col].setColor(color(100)); 
+      }
+    }
+  
+    grayRows += n;
   }
 }

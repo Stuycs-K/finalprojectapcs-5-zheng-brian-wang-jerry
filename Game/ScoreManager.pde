@@ -4,6 +4,7 @@ class ScoreManager {
   void addScore(int linesCleared) {
     score += linesCleared * 100;
     level = 1 + score / 500;
+    board.grayRow(1);
   }
 
   int getLevel() {
