@@ -183,11 +183,9 @@ class Board{
       Tetromino heldTetroCopy = heldTetro.copy();
       int type = heldTetro.tetrominoType;
 
-      for (Block b  : heldTetroCopy.blocks) {
-        System.out.println(b.x / blockLength + ", " + b.y / blockLength);
-      }
-
-      heldTetroCopy.initializeBlocks();
+      // for (Block b  : heldTetroCopy.blocks) {
+      //   System.out.println(b.x / blockLength + ", " + b.y / blockLength);
+      // }
       
       double x = 12.5;
       y = 18.5;
@@ -259,7 +257,7 @@ class Board{
       block.c = 0;
       block.setHighlight(true);
     }
-
+    
     tetroCopy.drawTetro();
 
 
@@ -301,12 +299,14 @@ class Board{
       
     if (heldTetro == null) {
       heldTetro = currentTetro;
-      heldTetro.c_x = grid[1][5].x;
-      heldTetro.c_y = grid[1][5].y;
+      // heldTetro.c_x = grid[1][5].x;
+      // heldTetro.c_y = grid[1][5].y;
       heldTetro.initializeBlocks();  
       spawnTetro();  
     } else {
-      Tetromino temp = currentTetro;
+      Tetromino temp = currentTetro.copy();
+      temp.initializeBlocks();  
+
       currentTetro = heldTetro;
   
       

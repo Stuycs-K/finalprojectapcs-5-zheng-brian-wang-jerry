@@ -18,23 +18,26 @@ class Block {
       strokeWeight(3);
       strokeC = color(210, 210, 210);
     }
-    if (x / size >= 10) {
-      if (c != color(211, 211, 211)) {
-        strokeWeight(3);
+    else if (c != 0) {
+      float r = red(c);
+      float g = green(c);
+      float b = blue(c);
 
-        float r = red(c);
-        float g = green(c);
-        float b = blue(c);
+      r *= (1.0 / 1.5);
+      g *= (1.0 / 1.5);
+      b *= (1.0 / 1.5); 
 
-        r *= (1.0 / 1.5);
-        g *= (1.0 / 1.5);
-        b *= (1.0 / 1.5); 
+      // System.out.println(r + ", " + g + ", " + b);
+      strokeC = color(r, g, b);
 
-        // System.out.println(r + ", " + g + ", " + b);
-        strokeC = color(r, g, b);
+      if (x / size >= 10) {
+        if (c != color(211, 211, 211)) {
+          strokeWeight(3);
+        }
+        else strokeC = c;
       }
-      else strokeC = c;
     }
+    
     
 
     fill(c);
@@ -64,4 +67,5 @@ class Block {
   void setHighlight(boolean value) {
     this.highlight = value;
   }
+  
 }

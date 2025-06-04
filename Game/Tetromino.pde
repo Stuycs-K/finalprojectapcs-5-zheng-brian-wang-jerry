@@ -102,14 +102,14 @@ class Tetromino {
       int y = (blocks[i].y / b_size) + dy;
       //System.out.println(dy + ", " + x + ", " + y);
       if (x >= 0 && x < grid[0].length && y < grid.length) {
-        System.out.println("true");
-        if (grid[y][x].c != 0 && grid[y][x].c != color(211, 211, 211)) {
+        // System.out.println("true");
+        if (grid[y][x].c != 0) {
           return false;
         }
       }
       else {
         // System.out.println("bad");  
-       System.out.println("false" + x + ", " + y + "dx: " + dx + " dy: " + dy); 
+      //  System.out.println("false" + x + ", " + y + "dx: " + dx + " dy: " + dy); 
         return false;
       }
     }
@@ -187,6 +187,8 @@ class Tetromino {
       this.blocks[i] = b[i].copy();
     }
   }
+
+  
   
   
 }
