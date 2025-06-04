@@ -302,8 +302,8 @@ class Board{
   }
   
   void grayRow(int row) {
-    for (int i = row-1; i >= 0; i--) {
-      for (int col = 0; col < boardWidth; col++) {
+    for (int i = row-2; i >= 0; i--) {
+      for (int col = 0; col < 10; col++) {
         grid[i][col].move(0, 1);
         grid[i+1][col] = grid[i][col].copy();
       }
