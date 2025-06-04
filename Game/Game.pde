@@ -1,9 +1,10 @@
-  Board board;
+  static Board board;
   ScoreManager scoreManager;
   int dropCounter = 0; 
   int dropInterval = 50;
   static int level = 0;
   static boolean isGameOver = false;
+  static int grayRows = 0;
 
 
   
@@ -68,6 +69,8 @@
       else if (isGameOver && key == 'r' || key == 'R'){
        setup();
        isGameOver = false;
+       level = 0;
+       grayRows = 0;
       }
     } 
   }

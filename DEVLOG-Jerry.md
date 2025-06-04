@@ -36,3 +36,9 @@ Added a game over screen, and fixed redundant code to allow smooth replaying exp
 
 ### 2025-05-30 -  Overall bugfixes.
 Read and made sure code was valid, as well as tying up loose ends for the project overall. ~1 hour
+
+### 2025-06-02 -  Started on grayRows method.
+Overall bugfixes, as well as starting on extra "floor is lava" or grayRows methods. ~ 1 hour
+
+### 2025-06-03 -  finished basic grayRows method.
+Got grayRows to work with one notable bug, which can be fixed later. Noticed lock could be fixed (visual bug only). ~1.5 hours

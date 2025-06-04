@@ -3,7 +3,12 @@ class ScoreManager {
 
   void addScore(int linesCleared) {
     score += linesCleared * 100;
+    int prevLevel = level;
     level = 1 + score / 500;
+    if (prevLevel < level) {
+      grayRows++;
+      board.grayRow(grayRows);
+    }
   }
 
   int getLevel() {
