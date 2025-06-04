@@ -157,32 +157,38 @@ class Board{
     
 
     int y = 1;
-    int offset = 4;
 
     for (int i = 0; i < 3; i++) {
+      int offset = 5;
+
       Tetromino current = upcomingTetro.get(i); 
+      Tetromino currentCopy = current.copy();
+
       int type = current.tetrominoType;
-      if (type == 0) offset = 6;
+      if (type == 0 || type == 1 || type == 2) {
+        if (i != 0) y--;
+      }
+      if (type == 0)  offset++;
 
       for (int j = 0; j < 4; j++) {
-        Block bCopy = current.blocks[j].copy();
-        bCopy.move(7, y);
-        bCopy.drawBlock();
+        Block block = currentCopy.blocks[j].copy();
+        block.move(7, y);
+        block.drawBlock();
       }
 
       y+=offset;
 
     }
 
-    for (int j = 0; j < 4; j++) {
-        if (heldTetro != null) {
-          Block heldCopy = heldTetro.blocks[j].copy();
-          heldCopy.move(7, 16);
-          heldCopy.drawBlock();
-        }
-        
+    if (heldTetro != null) {
+      Tetromino heldTetroCopy = heldTetro.copy();
+      for (Block b : heldTetroCopy.blocks) {
+        System.out.println(b.x / blockLength + ", " + b.y / blockLength);
       }
 
+      heldTetroCopy.moveTo(12, 18);
+      heldTetroCopy.drawTetro();
+    }
 
   }
 
@@ -282,18 +288,19 @@ class Board{
   void lockPiece() {
     if (hasHeld) return;  
   
-    
+      
     if (heldTetro == null) {
       heldTetro = currentTetro;
+      heldTetro.c_x = grid[1][5].x;
+      heldTetro.c_y = grid[1][5].y;
+      heldTetro.initializeBlocks();  
       spawnTetro();  
     } else {
       Tetromino temp = currentTetro;
       currentTetro = heldTetro;
   
       
-      currentTetro.c_x = grid[1][5].x;
-      currentTetro.c_y = grid[1][5].y;
-      currentTetro.initializeBlocks();  
+      
   
       heldTetro = temp;
     }
@@ -315,6 +322,7 @@ class Board{
     
     for (int col = 0; col < 10; col++) {
       grid[grid.length - row][col].setColor(128);
+    }
     }
   }
 }

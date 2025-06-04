@@ -49,6 +49,11 @@ class Block {
     x += dx * size;
     y += dy * size;
   }
+
+  void moveTo(int x, int y) {
+    this.x = x*size;
+    this.y = y*size;
+  }
   
   Block copy() {
     return new Block(x, y, size, c);
