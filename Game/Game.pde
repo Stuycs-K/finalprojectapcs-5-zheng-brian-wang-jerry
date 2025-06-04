@@ -9,7 +9,7 @@
 
   
   void setup() {
-    size(700, 1000);
+    size(750, 1000);
     frameRate(60);
     board = new Board();
     board.spawnTetro();

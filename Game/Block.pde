@@ -15,10 +15,10 @@ class Block {
     int strokeC = 50;
     // if (x / size == 10) strokeWeight(10);
     if (highlight) {
-      strokeWeight(4);
+      strokeWeight(3);
       strokeC = color(210, 210, 210);
     }
-    else if (x / size >= 10) {
+    if (x / size >= 10) {
       if (c != color(211, 211, 211)) {
         strokeWeight(3);
 
@@ -33,8 +33,10 @@ class Block {
         // System.out.println(r + ", " + g + ", " + b);
         strokeC = color(r, g, b);
       }
-      else strokeC = color(211, 211, 211);
+      else strokeC = c;
     }
+    
+
     fill(c);
     stroke(strokeC);  
     rect(x - (size / 2.0), y - (size / 2.0), size, size);
@@ -46,8 +48,8 @@ class Block {
 
   
   void move(int dx, int dy) {
-    x += dx * size;
-    y += dy * size;
+    x += dx;
+    y += dy;
   }
 
   void moveTo(int x, int y) {

@@ -28,7 +28,7 @@ class Board{
 
 
     upcomingTetro = new ArrayList<Tetromino>();
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
       upcomingTetro.add(makeRandoTetro());
     }
     // currentTetro = makeRandoTetro();
@@ -84,8 +84,6 @@ class Board{
     }
     
     return new Tetromino(
-      grid[h][500 / 2 / blockLength].x,
-      grid[h][500 / 2 / blockLength].y,
       type, blockLength,
       color(colors[type][0], colors[type][1], colors[type][2]),
       grid
@@ -123,7 +121,7 @@ class Board{
     
     line(10 * blockLength, 0, 10*blockLength, boardHeight * blockLength);
 
-    line(10*blockLength, 15*blockLength, 14*blockLength, 15*blockLength);
+    line(10*blockLength, 16*blockLength, boardWidth*blockLength, 16*blockLength);
     strokeWeight(1);
   }
 
@@ -156,37 +154,49 @@ class Board{
 
     
 
-    int y = 1;
+    double y = 2.5;
+    int prevType = -1;
 
-    for (int i = 0; i < 3; i++) {
-      int offset = 5;
+    for (int i = 0; i < 4; i++) {
+      double offset = 4;
 
       Tetromino current = upcomingTetro.get(i); 
       Tetromino currentCopy = current.copy();
 
       int type = current.tetrominoType;
-      if (type == 0 || type == 1 || type == 2) {
-        if (i != 0) y--;
-      }
-      if (type == 0)  offset++;
 
-      for (int j = 0; j < 4; j++) {
-        Block block = currentCopy.blocks[j].copy();
-        block.move(7, y);
-        block.drawBlock();
-      }
+      if (type == 0 || type == 3) y-=0.5;
+    
+      currentCopy.moveTo(12.5, y);
+
+      if (type == 0) y-=0.5;
+      if (type == 3) y+=0.5;
+
+      currentCopy.drawTetro();
 
       y+=offset;
+      prevType = type;
 
     }
 
     if (heldTetro != null) {
       Tetromino heldTetroCopy = heldTetro.copy();
-      for (Block b : heldTetroCopy.blocks) {
+      int type = heldTetro.tetrominoType;
+
+      for (Block b  : heldTetroCopy.blocks) {
         System.out.println(b.x / blockLength + ", " + b.y / blockLength);
       }
 
-      heldTetroCopy.moveTo(12, 18);
+      heldTetroCopy.initializeBlocks();
+      
+      double x = 12.5;
+      y = 18.5;
+
+      if (type == 3) {
+        y-=0.5;
+      }
+
+      heldTetroCopy.moveTo(x, y);
       heldTetroCopy.drawTetro();
     }
 
@@ -224,7 +234,7 @@ class Board{
   void allDownAndHighlight(boolean placeDown) {
     Tetromino tetroCopy = currentTetro.copy();
 
-    tetroCopy.setBlocks(currentTetro.blocks);
+    // tetroCopy.setBlocks(currentTetro.blocks);
 
 
     while (tetroCopy.moveDown() != 1);
@@ -311,7 +321,7 @@ class Board{
   void grayRow(int row) {
     for (int i = row-1; i >= 0; i--) {
       for (int col = 0; col < boardWidth; col++) {
-        grid[i][col].move(0, 1);
+        grid[i][col].move(0, blockLength);
         grid[i+1][col] = grid[i][col].copy();
       }
     }
@@ -322,7 +332,6 @@ class Board{
     
     for (int col = 0; col < 10; col++) {
       grid[grid.length - row][col].setColor(128);
-    }
     }
   }
 }

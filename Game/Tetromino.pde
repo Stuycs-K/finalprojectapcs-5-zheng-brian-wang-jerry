@@ -9,9 +9,7 @@ class Tetromino {
   boolean highlight;
   
   
-  Tetromino(int c_x, int c_y, int type, int size, int c, Block[][] grid) {
-    this.c_x = c_x;
-    this.c_y = c_y;
+  Tetromino(int type, int size, int c, Block[][] grid) {
     this.t_color = c;
     this.b_size = size;
     this.tetrominoType = type;
@@ -20,8 +18,8 @@ class Tetromino {
     initializeBlocks();
   }
 
-  Tetromino(int c_x, int c_y, int type, int size, int c, Block[][] grid, Block[] blocks) {
-    this(c_x, c_y, type, size, c, grid);
+  Tetromino(int type, int size, int c, Block[][] grid, Block[] blocks) {
+    this(type, size, c, grid);
     this.blocks = blocks;
   }
  
@@ -29,14 +27,26 @@ class Tetromino {
   void initializeBlocks() {
     this.blocks = new Block[4];
     double scale = b_size / 2.0;
+
+    this.c_x = 9;
+    this.c_y = 3;
+
+    if (tetrominoType == 0 || tetrominoType == 3) {
+      this.c_x = 10;
+      this.c_y = 2;
+    }
+    c_x*=scale;
+    c_y*=scale;
+    // int[][] starting_centers = new int[][] {{10, 2}, {9, 3},{9, 3}, {10, 2}, {9, 3}, {9, 3}, {9, 3}}
+
     int[][][] offsets = {
-      {{0, -2}, {0 ,0}, {0, 2}, {0, 4}}, // straight
-      {{0, -2}, {0, 0}, {0, 2}, {-2, 2}}, // L left
-      {{0, -2}, {0, 0}, {0, 2}, {2, 2}}, // L right
-      {{-2, 0}, {0 ,0}, {0, 2}, {-2, 2}}, // square
-      {{-2, 0}, {0 ,0}, {0, 2}, {2, 2}}, // left zigzag
-      {{2, 0}, {0 ,0}, {0, 2}, {-2, 2}}, // right zigzag
-      {{-2, 0}, {0, 0}, {2, 0}, {0, 2}}, // T shape 
+      {{-3, -1}, {-1 ,-1}, {1, -1}, {3, -1}}, // straight
+      {{-2, -2}, {-2, 0}, {0, 0}, {2, 0}}, // L left
+      {{2, -2}, {2, 0}, {0, 0}, {-2, 0}}, // L right
+      {{-1, -1}, {1 ,-1}, {-1, 1}, {1, 1}}, // square
+      {{-2, -2}, {0 ,-2}, {0, 0}, {2, 0}}, // left zigzag
+      {{2, -2}, {0 ,-2}, {0, 0}, {-2, 0}}, // right zigzag
+      {{0, -2}, {0, 0}, {-2, 0}, {2, 0}}, // T shape 
     };
     for (int i = 0; i < 4; i++) {
       int dx = offsets[tetrominoType][i][0];
@@ -105,7 +115,7 @@ class Tetromino {
     }
     
     for (int i = 0; i < blocks.length; i++) {
-      blocks[i].move(dx, dy);
+      blocks[i].move(dx * b_size, dy * b_size);
     }
     return true;
   }
@@ -139,10 +149,14 @@ class Tetromino {
     return move(0, 1);
   }
 
-  void moveTo(int x, int y) {
-    int dx = x - (c_x / b_size);
-    int dy = y - (c_y / b_size);
-    System.out.println(move(dx, dy));
+  // ignore grid
+  void moveTo(double x, double y) { 
+    int dx = (int) (x*b_size) - c_x;
+    int dy = (int) (y*b_size) - c_y;
+
+    for (Block b : blocks) {
+      b.move(dx, dy);
+    }
   }
 
   void drawTetro() {
@@ -157,7 +171,7 @@ class Tetromino {
       blocksCopy[i] = blocks[i].copy();
     }
 
-    return new Tetromino(c_x, c_y, tetrominoType, b_size, t_color, grid, blocksCopy);
+    return new Tetromino(tetrominoType, b_size, t_color, grid, blocksCopy);
   }
 
   void setHighlight(boolean value) {
