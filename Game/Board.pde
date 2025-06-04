@@ -11,7 +11,7 @@ class Board{
   Tetromino currentTetro;
   Tetromino heldTetro;
   boolean hasHeld = false;
-  int grayRows = 0;
+  
 
 
   Board(){
@@ -38,7 +38,7 @@ class Board{
 
   public boolean isLineFull(int row){
     for (int j = 0; j < boardWidth; j++){
-      if (grid[row][j].c == 0){
+      if (grid[row][j].c == 0 || grid[row][j].c == 128 ){
         return false;
       }
     }
@@ -63,6 +63,8 @@ class Board{
         //System.out.println(grid[1][col].y / blockLength);
     }
     scoreManager.addScore(1);
+    
+    
   }
 
   public Tetromino makeRandoTetro() {
@@ -299,19 +301,16 @@ class Board{
     hasHeld = true;
   }
   
-  void grayRow(int n){
-    for (int row = 0; row < boardHeight - n; row++) {
+  void grayRow(int row) {
+    for (int i = row-1; i >= 0; i--) {
       for (int col = 0; col < boardWidth; col++) {
-        grid[row][col].setColor(grid[row + n][col].c);
+        grid[i][col].move(0, 1);
+        grid[i+1][col] = grid[i][col].copy();
       }
     }
-  
-    for (int row = boardHeight - n; row < boardHeight; row++) {
-      for (int col = 0; col < boardWidth; col++) {
-        grid[row][col].setColor(color(100)); 
-      }
+    
+    for (int col = 0; col < 10; col++) {
+      grid[grid.length - row][col].setColor(128);
     }
-  
-    grayRows += n;
   }
 }
