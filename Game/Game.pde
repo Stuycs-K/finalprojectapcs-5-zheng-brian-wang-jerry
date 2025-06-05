@@ -84,7 +84,7 @@
       if (key == 'c' || key == 'C') {
         board.lockPiece();
       }
-      if (key == ' ' && !) {
+      if (key == ' ' && !holdingSpace) {
         holdingSpace = true;
         board.allDownAndHighlight(true);
       }
