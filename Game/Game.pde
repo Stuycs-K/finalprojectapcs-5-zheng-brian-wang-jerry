@@ -4,7 +4,7 @@
   int dropInterval = 50;
   static int level = 0;
   static boolean isGameOver = false;
-  static int grayRows = 0;
+  static int grayRows = 1;
 
 
   
@@ -21,7 +21,7 @@
     //for (int i = 0; i < level; i++) {
     //  dropInterval *= 0.9;
     //}
-    frameRate(60 + (level * 20));
+    frameRate(60);
       
     if (isGameOver) {
       fill(255, 0, 0);
