@@ -7,6 +7,10 @@
   static boolean isGameOver = false;
   static int grayRows = 0;
   boolean holdingSpace = false;
+  static boolean grayMode = false;
+  static int grayTicks = 0;
+  static int lastPoint = 0;
+  static int score = 0;
 
 
   
@@ -29,6 +33,17 @@
   void draw() {
     background(0);
     
+    if (grayMode){
+      if (lastPoint != score){
+        grayTicks = 0;
+      }
+      
+      if (grayTicks >= 600){
+        grayTicks = 0;
+        grayRows++;
+        board.grayRow(grayRows);
+      }
+    }
     
     if (levelChange) {
       dropInterval = (int) (60 * (Math.pow((0.8-((level-1)*0.007)), level - 1)));
@@ -61,7 +76,7 @@
     board.drawBoard();
     scoreManager.display();
     
- 
+    grayTicks++;
      
   }
   
@@ -83,6 +98,9 @@
       
       if (key == 'c' || key == 'C') {
         board.lockPiece();
+      }
+      if (key == 'g' || key == 'G') {
+        grayMode = !grayMode;
       }
       if (key == ' ' && !holdingSpace) {
         holdingSpace = true;
