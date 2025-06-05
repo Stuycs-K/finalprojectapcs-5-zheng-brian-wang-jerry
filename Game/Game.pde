@@ -1,10 +1,12 @@
   static Board board;
   ScoreManager scoreManager;
   int dropCounter = 0; 
-  int dropInterval = 50;
+  int dropInterval = 60;
   static int level = 0;
+  static boolean levelChange = false;
   static boolean isGameOver = false;
   static int grayRows = 0;
+  boolean holdingSpace = false;
 
 
   
@@ -18,10 +20,17 @@
   
   void draw() {
     background(0);
+    
+    
+    if (levelChange) {
+      dropInterval = (int) (dropInterval * (Math.pow((0.8-((level-1)*0.007)), level - 1)));
+      levelChange = false;
+    }
+    
     //for (int i = 0; i < level; i++) {
     //  dropInterval *= 0.9;
     //}
-    frameRate(60 + (level * 20));
+    //frameRate(60 + (level * 20));
       
     if (isGameOver) {
       fill(255, 0, 0);
@@ -43,11 +52,14 @@
     board.update();
     board.drawBoard();
     scoreManager.display();
+    
+ 
      
   }
   
   void keyPressed() {
     if (key == CODED) {
+      
       if (keyCode == LEFT) {
         board.currentTetro.moveLeft();
       } else if (keyCode == RIGHT) {
@@ -60,10 +72,12 @@
         board.currentTetro.rotate();
       }
     } else {
+      
       if (key == 'c' || key == 'C') {
         board.lockPiece();
       }
-      if (key == ' ') {
+      if (key == ' ' && !holdingSpace) {
+        holdingSpace = true;
         board.allDownAndHighlight(true);
       }
       else if (isGameOver && key == 'r' || key == 'R'){
@@ -74,3 +88,7 @@
       }
     } 
   }
+  void keyReleased() {
+    if (key == ' ') holdingSpace = false;
+  }
+    

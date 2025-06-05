@@ -20,7 +20,7 @@ class Board{
       for (int j = 0; j < boardWidth; j++) {
         int c = 0;
         // if (j == 10) c = color(255, 255, 255);
-        if (j >= 10) c = color(211, 211, 211);
+        // if (j >= 10) c = color(211, 211, 211);
         grid[i][j] = new Block((int) ((j+0.5) * blockLength), int ((i+0.5) * blockLength), blockLength, c);
       }
     }
@@ -37,7 +37,7 @@ class Board{
 
 
   public boolean isLineFull(int row){
-    for (int j = 0; j < boardWidth; j++){
+    for (int j = 0; j < 10; j++){
       if (grid[row][j].c == 0 || grid[row][j].c == 128 ){
         return false;
       }
