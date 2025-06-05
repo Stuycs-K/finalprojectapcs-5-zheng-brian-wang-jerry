@@ -38,7 +38,7 @@ class Board{
 
   public boolean isLineFull(int row){
     for (int j = 0; j < 10; j++){
-      if (grid[row][j].c == 0 || grid[row][j].c == 128 ){
+      if (grid[row][j].c == 0 || grid[row][j].c == 128){
         return false;
       }
     }
@@ -48,21 +48,26 @@ class Board{
 
 
   public void clearLine(int row) {
+
+    int before = grayRows;
+    scoreManager.addScore(1);
+
+    if (grayRows > before) return;
+
     for (int col = 0; col < 10; col++) {
       grid[row][col].setColor(0);
     }
     for (int i = row-1; i >= 0; i--) {
       for (int col = 0; col < 10; col++) {
-        grid[i][col].move(0, 1);
+        grid[i][col].move(0, blockLength);
         grid[i+1][col] = grid[i][col].copy();
       }
     }
 
     for (int col = 0; col < boardWidth; col++) {
-        grid[grayRows][col].move(0, -1);
+        grid[0][col].move(0, -blockLength);
         //System.out.println(grid[1][col].y / blockLength);
     }
-    scoreManager.addScore(1);
     
     
   }
@@ -134,9 +139,12 @@ class Board{
         if (grid[i][j] != null) {
           //stroke(255);
           grid[i][j].drawBlock();
+          // System.out.print(grid[i][j].x / blockLength + " , " + grid[i][j].y / blockLength + "; ");
         }
       }
+      // System.out.println();
     }
+    // System.out.println();
 
 
     allDownAndHighlight(false);
@@ -320,8 +328,11 @@ class Board{
   
   void grayRow(int row) {
     for (int col = 0; col < 10; col++) {
+      // System.out.println(row);
       grid[grid.length - row][col].setColor(128);
+      // grid[grid.length - row][col].move(0, blockLength);
     }
+
     
   }
 

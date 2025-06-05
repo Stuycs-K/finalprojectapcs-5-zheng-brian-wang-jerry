@@ -7,7 +7,11 @@ class ScoreManager {
     level = 1 + score / 500;
     if (prevLevel < level) {
       levelChange = true;
-      grayRows++;
+      if (level >= 5) {
+        grayRows++;
+        board.grayRow(grayRows);
+      }
+      
     }
   }
 

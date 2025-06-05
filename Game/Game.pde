@@ -5,7 +5,7 @@
   static int level = 0;
   static boolean levelChange = false;
   static boolean isGameOver = false;
-  static int grayRows = 1;
+  static int grayRows = 0;
   boolean holdingSpace = false;
 
 
@@ -16,6 +16,14 @@
     board = new Board();
     board.spawnTetro();
     scoreManager = new ScoreManager();
+    
+    dropCounter = 0; 
+    dropInterval = 60;
+    level = 0;
+    levelChange = false;
+    isGameOver = false;
+    grayRows = 0;
+    holdingSpace = false;
   }
   
   void draw() {
@@ -23,7 +31,7 @@
     
     
     if (levelChange) {
-      dropInterval = (int) (dropInterval * (Math.pow((0.8-((level-1)*0.007)), level - 1)));
+      dropInterval = (int) (60 * (Math.pow((0.8-((level-1)*0.007)), level - 1)));
       levelChange = false;
     }
     
