@@ -5,7 +5,7 @@
   static int level = 0;
   static boolean levelChange = false;
   static boolean isGameOver = false;
-  static int grayRows = 0;
+  static int grayRows = 1;
   boolean holdingSpace = false;
 
 

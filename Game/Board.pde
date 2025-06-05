@@ -48,11 +48,11 @@ class Board{
 
 
   public void clearLine(int row) {
-    for (int col = 0; col < boardWidth; col++) {
+    for (int col = 0; col < 10; col++) {
       grid[row][col].setColor(0);
     }
     for (int i = row-1; i >= 0; i--) {
-      for (int col = 0; col < boardWidth; col++) {
+      for (int col = 0; col < 10; col++) {
         grid[i][col].move(0, 1);
         grid[i+1][col] = grid[i][col].copy();
       }
@@ -319,19 +319,10 @@ class Board{
   }
   
   void grayRow(int row) {
-    for (int i = row-1; i >= 0; i--) {
-      for (int col = 0; col < boardWidth; col++) {
-        grid[i][col].move(0, blockLength);
-        grid[i+1][col] = grid[i][col].copy();
-      }
-    }
-    
-  for (int col = 0; col < 10; col++) {
-    grid[0][col] = new Block(col * blockLength, 0, blockLength, 0); 
-  }
-    
     for (int col = 0; col < 10; col++) {
       grid[grid.length - row][col].setColor(128);
     }
+    
   }
+
 }

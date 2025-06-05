@@ -8,7 +8,6 @@ class ScoreManager {
     if (prevLevel < level) {
       levelChange = true;
       grayRows++;
-      board.grayRow(grayRows);
     }
   }
 
