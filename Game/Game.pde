@@ -79,7 +79,6 @@
       grayTicks++;
     }
     lastPoint = score;
-     
   }
   
   void keyPressed() {

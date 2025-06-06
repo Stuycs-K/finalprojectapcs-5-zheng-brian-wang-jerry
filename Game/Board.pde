@@ -327,6 +327,7 @@ class Board{
   }
   
   void grayRow(int row) {
+    
     if (row > 0){
       for (int col = 0; col < 10; col++) {
         // System.out.println(row);
@@ -341,8 +342,8 @@ class Board{
         }
       }
     }
-      else if (row == 0){
-              for (int i = grid.length-row-1; i >= 0; i--) {
+    else if (row == 0){
+      for (int i = grid.length-row-1; i >= 0; i--) {
         for (int col = 0; col < 10; col++) {
           if (grid[i][col].c == 128){
             grid[i][col].setColor(0);
