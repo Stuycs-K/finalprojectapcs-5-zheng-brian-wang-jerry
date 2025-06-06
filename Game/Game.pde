@@ -42,7 +42,7 @@
       if (grayTicks >= 600){
         grayTicks = 0;
         grayRows++;
-        board.grayRow(grayRows);
+        board.grayRow(grayRows, false);
       }
     }
     
@@ -103,7 +103,7 @@
       }
       if (key == 'T' || key == 't') {
         grayRows--;
-        board.grayRow(grayRows);
+        board.grayRow(grayRows, true);
 
       }
       if (key == 'g' || key == 'G') {

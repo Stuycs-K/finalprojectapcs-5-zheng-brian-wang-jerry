@@ -7,13 +7,13 @@ class ScoreManager {
     if (prevLevel < level) {
       if (grayMode){
           grayRows--;
-          board.grayRow(grayRows);
+          board.grayRow(grayRows, true);
       }
       else{
         levelChange = true;
         if (level >= 1) {
           grayRows++;
-          board.grayRow(grayRows);
+          board.grayRow(grayRows, false);
         }
       }
     }

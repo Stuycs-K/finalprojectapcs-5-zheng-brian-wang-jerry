@@ -326,7 +326,7 @@ class Board{
     hasHeld = true;
   }
   
-  void grayRow(int row) {
+  void grayRow(int row, boolean subtract) {
     
     if (row > 0){
       for (int col = 0; col < 10; col++) {
@@ -351,5 +351,20 @@ class Board{
         }
       }
     }
+    if (subtract) {
+      
+      // System.out.println(row);
+      for (int i = boardHeight - 2 - row; i >= 0; i--) {
+        for (int col = 0; col < 10; col++) {
+          grid[i][col].move(0, blockLength);
+          grid[i+1][col] = grid[i][col].copy();
+        }
+      }
+
+      for (int col = 0; col < boardWidth; col++) {
+          grid[0][col].move(0, -blockLength);
+      }
+    }
+   
   }
 }
