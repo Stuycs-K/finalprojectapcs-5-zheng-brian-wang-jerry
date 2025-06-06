@@ -91,6 +91,12 @@ class Tetromino {
       blocks[i].x = newXValues[i];
       blocks[i].y = newYValues[i];
     }
+    
+    if (fastRotateMode){
+      moveDown();
+      moveDown();
+      moveDown();
+    }
   }
 
 

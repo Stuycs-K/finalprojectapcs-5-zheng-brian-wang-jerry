@@ -11,6 +11,7 @@
   static int grayTicks = 0;
   static int lastPoint = 0;
   static int score = 0;
+  static boolean fastRotateMode = false;
 
 
   
@@ -107,6 +108,9 @@
       }
       if (key == 'g' || key == 'G') {
         grayMode = !grayMode;
+      }
+      if (key == 'f' || key == 'F') {
+        fastRotateMode = !fastRotateMode;
       }
       if (key == ' ' && !holdingSpace) {
         holdingSpace = true;

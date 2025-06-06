@@ -35,5 +35,11 @@ class ScoreManager {
     else{
       text("Gray Mode: Off", 10, 60);
     }
+    if (fastRotateMode){
+      text("Fast Rotate Mode: On", 10, 80);
+    }
+    else{
+      text("Fast Rotate Mode: Off", 10, 80);
+    }
   }
 }
