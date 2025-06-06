@@ -75,8 +75,10 @@
     board.update();
     board.drawBoard();
     scoreManager.display();
-    
-    grayTicks++;
+    if (grayMode){
+      grayTicks++;
+    }
+    lastPoint = score;
      
   }
   
@@ -98,6 +100,11 @@
       
       if (key == 'c' || key == 'C') {
         board.lockPiece();
+      }
+      if (key == 'T' || key == 't') {
+        grayRows--;
+        board.grayRow(grayRows);
+
       }
       if (key == 'g' || key == 'G') {
         grayMode = !grayMode;

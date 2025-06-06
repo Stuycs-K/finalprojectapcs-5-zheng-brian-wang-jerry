@@ -327,13 +327,28 @@ class Board{
   }
   
   void grayRow(int row) {
-    for (int col = 0; col < 10; col++) {
-      // System.out.println(row);
-      grid[grid.length - row][col].setColor(128);
-      // grid[grid.length - row][col].move(0, blockLength);
+    if (row > 0){
+      for (int col = 0; col < 10; col++) {
+        // System.out.println(row);
+        grid[grid.length - row][col].setColor(128);
+        // grid[grid.length - row][col].move(0, blockLength);
+      }
+      for (int i = grid.length-row-1; i >= 0; i--) {
+        for (int col = 0; col < 10; col++) {
+          if (grid[i][col].c == 128){
+            grid[i][col].setColor(0);
+          }
+        }
+      }
     }
-
-    
+      else if (row == 0){
+              for (int i = grid.length-row-1; i >= 0; i--) {
+        for (int col = 0; col < 10; col++) {
+          if (grid[i][col].c == 128){
+            grid[i][col].setColor(0);
+          }
+        }
+      }
+    }
   }
-
 }
