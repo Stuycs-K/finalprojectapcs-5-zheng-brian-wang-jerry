@@ -42,3 +42,12 @@ Overall bugfixes, as well as starting on extra "floor is lava" or grayRows metho
 
 ### 2025-06-03 -  finished basic grayRows method.
 Got grayRows to work with one notable bug, which can be fixed later. Noticed lock could be fixed (visual bug only). ~1.5 hours
+
+### 2025-06-04 -  tried to fix grayRows method.
+Fixed most of grayRows (one main issue with shifting down after grayRows were created). ~1 hour
+
+### 2025-06-05 -  Started on new grayRows-based gamemode.
+Started and finished new gamemode, where eveything works except shifting down after grayRows get removed. ~1.5 hours
+
+### 2025-06-03 -  Started second gamemode and documentation
+Wrote a "Fast Rotate" gamemode and started on READMe documentation. ~1.5 hours
