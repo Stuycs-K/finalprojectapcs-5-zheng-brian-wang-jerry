@@ -12,3 +12,12 @@ Rising Tides: Want to fill only one part of the board for a satisifying clip? We
 Fast Rotate: Ever spam rotate for fun? Well, now you can't. Meant to force players to think before they move, rotating now shifts the tetronimo downwards so that rotating has to be calculated. Get it right or face the consequences. (Keybind: F)
 
   
+Keybinds:
+
+R: Restart game (only after losing a game)
+Left and Right keys: move tetronimo left or right
+Up key: Rotate tetronimo clockwise 90 degrees
+Down key: Shift tetronimo down quickly
+Space key: Forces tetronimo to lowest possible position
+G key: Toggle Rising Tides mode
+F key: Toggle Fast Rotate mode
