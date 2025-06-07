@@ -7,5 +7,8 @@ lorem ipsum.
 
 Modes:
 
-Rising Tides: Want to fill only one part of the board for a satisifying clip? Well, now you can't! The gray rows will now rise as the game progresses, regardless of what you're doing! The only way to stop this is to PLAY THE GAME and score points! Eveyrtime points are scored, the counter of your impending doom is reset to 0. During this mode, normal level ups will not cause the gray rows to rise, but rather will actually get rid of one gray row. Have fun!
+Rising Tides: Want to fill only one part of the board for a satisifying clip? Well, now you can't! The gray rows will now rise as the game progresses, regardless of what you're doing! The only way to stop this is to PLAY THE GAME and score points! Eveyrtime points are scored, the counter of your impending doom is reset to 0. During this mode, normal level ups will not cause the gray rows to rise, but rather will actually get rid of one gray row. Have fun! (Keybind: G)
+
+Fast Rotate: Ever spam rotate for fun? Well, now you can't. Meant to force players to think before they move, rotating now shifts the tetronimo downwards so that rotating has to be calculated. Get it right or face the consequences. (Keybind: F)
+
   
