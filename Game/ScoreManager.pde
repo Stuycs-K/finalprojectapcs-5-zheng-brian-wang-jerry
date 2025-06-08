@@ -1,7 +1,10 @@
 class ScoreManager {
+  int rightEdge = startingX * blockLength;
 
-  void addScore(int linesCleared) {
-    score += linesCleared * 100;
+  int middle = rightEdge / 2;
+
+  void addScore() {
+    score += 100;
     int prevLevel = level;
     level = 1 + score / 500;
     if (prevLevel < level) {
@@ -24,22 +27,36 @@ class ScoreManager {
   }
 
   void display() {
+    int tSize = 43;
     fill(255);
-    textSize(16);
-    textAlign(LEFT, BASELINE);
-    text("Score: " + score, 10, 20);
-    text("Level: " + level, 10, 40);
-    if (grayMode){
-      text("Gray Mode: On", 10, 60);
-    }
-    else{
-      text("Gray Mode: Off", 10, 60);
-    }
-    if (fastRotateMode){
-      text("Fast Rotate Mode: On", 10, 80);
-    }
-    else{
-      text("Fast Rotate Mode: Off", 10, 80);
-    }
+    textSize(tSize);
+    textAlign(CENTER);
+    
+    text("SCORE", middle, tSize + tSize/2);
+    text(score, middle, 2*tSize + tSize/2);
+
+    text("LEVEL", middle, 5*tSize + tSize/2);
+    text(level, middle, 6*tSize + tSize/2); 
+
+    text("LINES", middle, 9*tSize + tSize/2);
+    text(level, middle, 10*tSize + tSize/2); 
+
+    stroke(255);
+    strokeWeight(10);
+
+    line(0, height/2, startingX*blockLength, height/2);
+    line(startingX*blockLength, 0, startingX*blockLength, height);
+    // if (grayMode){
+    //   text("GRAY MODE: OFF", 10, 60);
+    // }
+    // else{
+    //   text("GRAY MODE: ON", 10, 60);
+    // }
+    // if (fastRotateMode){
+    //   text("FAST ROTATE MODE: ON", 10, 80);
+    // }
+    // else{
+    //   text("FAST ROTATE MODE: OFF", 10, 80);
+    // }
   }
 }

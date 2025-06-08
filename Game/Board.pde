@@ -41,7 +41,7 @@ class Board{
 
 
   public boolean isLineFull(int row){
-    for (int j = startingX; j < 10; j++){
+    for (int j = 0; j < 10; j++){
       if (grid[row][j].c == 0 || grid[row][j].c == 128){
         return false;
       }
@@ -52,9 +52,10 @@ class Board{
 
 
   public void clearLine(int row) {
+    linesCleared++;
 
     int before = grayRows;
-    scoreManager.addScore(1);
+    scoreManager.addScore();
 
     if (grayRows > before) return;
 
@@ -72,8 +73,7 @@ class Board{
         grid[0][col].move(0, -blockLength);
         //System.out.println(grid[1][col].y / blockLength);
     }
-    
-    
+        
   }
 
   public Tetromino makeRandoTetro() {

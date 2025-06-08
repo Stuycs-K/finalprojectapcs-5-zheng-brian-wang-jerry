@@ -1,22 +1,30 @@
   static Board board;
   ScoreManager scoreManager;
+
   int dropCounter = 0; 
   int dropInterval = 60;
+
   static int level = 0;
-  static boolean levelChange = false;
-  static boolean isGameOver = false;
-  static int grayRows = 0;
-  boolean holdingSpace = false;
-  static boolean grayMode = false;
-  static int grayTicks = 0;
-  static int lastPoint = 0;
   static int score = 0;
-  static boolean fastRotateMode = false;
+  static int linesCleared  = 0;
+
+  static int grayRows = 0;
+  static int grayTicks = 0;
+
+  static int lastPoint = 0;
 
   static int blockLength = 50;
   static int statsBoardWidth = 200;
   static int startingX = statsBoardWidth / blockLength;
   static int endingX = startingX + 10;
+
+  static boolean levelChange = false;
+  static boolean isGameOver = false;
+  boolean holdingSpace = false;
+  static boolean grayMode = false;
+  static boolean fastRotateMode = false;
+
+  
 
 
 
@@ -44,6 +52,8 @@
     holdingSpace = false;
     grayMode = false;
     fastRotateMode = false;
+
+    strokeCap(SQUARE);
   }
   
   void draw() {
