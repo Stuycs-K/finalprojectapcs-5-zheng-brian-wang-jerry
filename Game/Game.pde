@@ -67,7 +67,7 @@
       if (grayTicks >= 600){
         grayTicks = 0;
         grayRows++;
-        board.grayRow(grayRows, false);
+        board.grayRow(grayRows);
       }
     }
     

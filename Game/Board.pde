@@ -326,46 +326,53 @@ class Board{
   
     hasHeld = true;
   }
-  
-  void grayRow(int row, boolean subtract) {
+
+  void removeGrayRow(int row) {
     
-    if (row > 0){
+    // System.out.println(row);
+    for (int col = 0; col < 10; col++) {
+      grid[boardHeight-1-row][col].c = 0;
+    }
+
+    for (int i = boardHeight - 2 - row; i >= 0; i--) {
+      for (int col = 0; col < 10; col++) {
+        grid[i][col].move(0, blockLength);
+        grid[i+1][col] = grid[i][col].copy();
+      }
+    }
+
+    for (int col = 0; col < boardWidth; col++) {
+        grid[0][col].move(0, -blockLength);
+    }
+
+  }
+  
+  void grayRow(int row) {
+    
+    // if (row > 0){
       for (int col = 0; col < 10; col++) {
         // System.out.println(row);
         grid[grid.length - row][col].setColor(128);
         // grid[grid.length - row][col].move(0, blockLength);
       }
-      for (int i = grid.length-row-1; i >= 0; i--) {
-        for (int col = 0; col < 10; col++) {
-          if (grid[i][col].c == 128){
-            grid[i][col].setColor(0);
-          }
-        }
-      }
-    }
-    else if (row == 0){
-      for (int i = grid.length-row-1; i >= 0; i--) {
-        for (int col = 0; col < 10; col++) {
-          if (grid[i][col].c == 128){
-            grid[i][col].setColor(0);
-          }
-        }
-      }
-    }
-    if (subtract) {
-      
-      // System.out.println(row);
-      for (int i = boardHeight - 2 - row; i >= 0; i--) {
-        for (int col = 0; col < 10; col++) {
-          grid[i][col].move(0, blockLength);
-          grid[i+1][col] = grid[i][col].copy();
-        }
-      }
-
-      for (int col = 0; col < boardWidth; col++) {
-          grid[0][col].move(0, -blockLength);
-      }
-    }
+      // for (int i = grid.length-row-1; i >= 0; i--) {
+      //   for (int col = 0; col < 10; col++) {
+      //     if (grid[i][col].c == 128){
+      //       grid[i][col].setColor(0);
+      //     }
+      //   }
+      // }
+    // }
+    // else if (row == 0){
+    //   for (int i = grid.length-row-1; i >= 0; i--) {
+    //     for (int col = 0; col < 10; col++) {
+    //       if (grid[i][col].c == 128){
+    //         grid[i][col].setColor(0);
+    //       }
+    //     }
+    //   }
+    // }
+    
    
   }
 }
