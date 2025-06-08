@@ -23,6 +23,7 @@
   boolean holdingSpace = false;
   static boolean grayMode = false;
   static boolean fastRotateMode = false;
+  static boolean inverseMode = false;
 
   
 
@@ -112,9 +113,19 @@
       if (isGameOver) return;
       
       if (keyCode == LEFT) {
-        board.currentTetro.moveLeft();
+        if (inverseMode){
+           board.currentTetro.moveRight();
+        }
+        else{
+          board.currentTetro.moveLeft();
+        }
       } else if (keyCode == RIGHT) {
-        board.currentTetro.moveRight();
+        if (inverseMode){
+           board.currentTetro.moveLeft();
+        }
+        else{
+          board.currentTetro.moveRight();
+        }
       } else if (keyCode == DOWN) {
         if (board.currentTetro.moveDown() == 1) {
           board.placeDown();
@@ -143,6 +154,9 @@
       }
       if (key == 'f' || key == 'F') {
         fastRotateMode = !fastRotateMode;
+      }
+      if (key == 'i' || key == 'I') {
+        inverseMode = !inverseMode;
       }
       if (key == ' ' && !holdingSpace) {
         holdingSpace = true;
