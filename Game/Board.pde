@@ -1,7 +1,11 @@
 class Board{
   Block[][] grid;
-  int blockLength = 50;
-  int boardWidth = width/blockLength;
+  int blockLength = Game.blockLength;
+
+  int startingX = Game.startingX;
+  int endingX = Game.endingX;
+  int boardWidth = Game.endingX - Game.startingX;
+
   int boardHeight = height/blockLength; 
 
   ArrayList<Integer> tetroTypes;
@@ -21,7 +25,7 @@ class Board{
         int c = 0;
         // if (j == 10) c = color(255, 255, 255);
         // if (j >= 10) c = color(211, 211, 211);
-        grid[i][j] = new Block((int) ((j+0.5) * blockLength), int ((i+0.5) * blockLength), blockLength, c);
+        grid[i][j] = new Block((int) ((startingX + j+0.5) * blockLength), int ((i+0.5) * blockLength), blockLength, c);
       }
     }
     tetroTypes = new ArrayList<Integer>();
@@ -37,7 +41,7 @@ class Board{
 
 
   public boolean isLineFull(int row){
-    for (int j = 0; j < 10; j++){
+    for (int j = startingX; j < 10; j++){
       if (grid[row][j].c == 0 || grid[row][j].c == 128){
         return false;
       }
@@ -89,7 +93,7 @@ class Board{
     }
     
     return new Tetromino(
-      type, blockLength,
+      type,
       color(colors[type][0], colors[type][1], colors[type][2]),
       grid
     );
@@ -103,7 +107,7 @@ class Board{
     hasHeld = false;
     
     for (Block b : currentTetro.blocks) {
-      int x = b.x / blockLength;
+      int x = b.x / blockLength - startingX;
       int y = b.y / blockLength;
   
       if (grid[y][x].c != 0) {
@@ -124,13 +128,55 @@ class Board{
     stroke(color(255, 255, 255));
     strokeWeight(10);
     
-    line(10 * blockLength, 0, 10*blockLength, boardHeight * blockLength);
+    line(endingX * blockLength, 0, endingX * blockLength, boardHeight * blockLength);
 
-    line(10*blockLength, 16*blockLength, boardWidth*blockLength, 16*blockLength);
+    line(endingX *blockLength, 16*blockLength, width, 16*blockLength);
     strokeWeight(1);
   }
 
+  public void drawUpcomingTetro() {
+    double y = 2.5;
+    int prevType = -1;
 
+    for (int i = 0; i < 4; i++) {
+      double offset = 4;
+
+      Tetromino current = upcomingTetro.get(i); 
+      Tetromino currentCopy = current.copy();
+
+      int type = current.tetrominoType;
+
+      if (type == 0 || type == 3) y-=0.5;
+    
+      currentCopy.moveTo(12.5 + startingX, y);
+
+      if (type == 0) y-=0.5;
+      if (type == 3) y+=0.5;
+
+      currentCopy.drawTetro();
+
+      y+=offset;
+      prevType = type;
+
+    }
+  }
+
+  public void drawHeldTetro() {
+    if (heldTetro != null) {
+      Tetromino heldTetroCopy = heldTetro.copy();
+      int type = heldTetro.tetrominoType;
+
+      double x = 12.5 + startingX;
+      double y = 18.5;
+
+      if (type == 3) {
+        y-=0.5;
+      }
+
+      heldTetroCopy.moveTo(x, y);
+      heldTetroCopy.drawTetro();
+    }
+  }
 
 
   public void drawBoard() {
@@ -148,8 +194,7 @@ class Board{
 
 
     allDownAndHighlight(false);
-
-
+   
 
     if (currentTetro != null) {
       currentTetro.drawTetro();
@@ -157,54 +202,10 @@ class Board{
 
     drawBorders();
 
+    drawUpcomingTetro();
 
-
-
-    
-
-    double y = 2.5;
-    int prevType = -1;
-
-    for (int i = 0; i < 4; i++) {
-      double offset = 4;
-
-      Tetromino current = upcomingTetro.get(i); 
-      Tetromino currentCopy = current.copy();
-
-      int type = current.tetrominoType;
-
-      if (type == 0 || type == 3) y-=0.5;
-    
-      currentCopy.moveTo(12.5, y);
-
-      if (type == 0) y-=0.5;
-      if (type == 3) y+=0.5;
-
-      currentCopy.drawTetro();
-
-      y+=offset;
-      prevType = type;
-
-    }
-
-    if (heldTetro != null) {
-      Tetromino heldTetroCopy = heldTetro.copy();
-      int type = heldTetro.tetrominoType;
-
-      // for (Block b  : heldTetroCopy.blocks) {
-      //   System.out.println(b.x / blockLength + ", " + b.y / blockLength);
-      // }
-      
-      double x = 12.5;
-      y = 18.5;
-
-      if (type == 3) {
-        y-=0.5;
-      }
-
-      heldTetroCopy.moveTo(x, y);
-      heldTetroCopy.drawTetro();
-    }
+   
+    drawHeldTetro();
 
   }
 
@@ -229,7 +230,7 @@ class Board{
       for (int i = 0; i < 4; i++) {
         int x = (currentTetro.blocks[i].x / blockLength);
         int y = (currentTetro.blocks[i].y / blockLength);
-        grid[y][x].setColor(currentTetro.blocks[i].c);
+        grid[y][x-startingX].setColor(currentTetro.blocks[i].c);
       }
       spawnTetro();
     //} 

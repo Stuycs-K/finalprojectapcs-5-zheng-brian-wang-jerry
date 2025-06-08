@@ -13,10 +13,16 @@
   static int score = 0;
   static boolean fastRotateMode = false;
 
+  static int blockLength = 50;
+  static int statsBoardWidth = 200;
+  static int startingX = statsBoardWidth / blockLength;
+  static int endingX = startingX + 10;
+
+
 
   
   void setup() {
-    size(750, 1000);
+    size(950, 1000);
     frameRate(60);
     board = new Board();
     board.spawnTetro();

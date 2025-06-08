@@ -3,23 +3,23 @@ import java.util.Arrays;
 class Tetromino {
   Block[] blocks;
   int c_x, c_y;
-  int t_color, b_size;
+  int t_color;
+  int b_size = Game.blockLength;
   int tetrominoType;
   Block[][] grid;
   boolean highlight;
   
   
-  Tetromino(int type, int size, int c, Block[][] grid) {
+  Tetromino(int type, int c, Block[][] grid) {
     this.t_color = c;
-    this.b_size = size;
     this.tetrominoType = type;
     this.grid = grid;  
 
     initializeBlocks();
   }
 
-  Tetromino(int type, int size, int c, Block[][] grid, Block[] blocks) {
-    this(type, size, c, grid);
+  Tetromino(int type, int c, Block[][] grid, Block[] blocks) {
+    this(type, c, grid);
     this.blocks = blocks;
   }
  
@@ -28,12 +28,12 @@ class Tetromino {
     this.blocks = new Block[4];
     double scale = b_size / 2.0;
 
-    this.c_x = 9;
+    this.c_x = 9 + startingX;
     this.c_y = 3;
 
     if (tetrominoType == 0 || tetrominoType == 3) {
-      this.c_x = 10;
-      this.c_y = 2;
+      this.c_x++;
+      this.c_y--;
     }
     c_x*=scale;
     c_y*=scale;
@@ -61,6 +61,7 @@ class Tetromino {
     }
   }
   
+  
   void rotate() {
     if (tetrominoType == 3) return;
     
@@ -79,7 +80,7 @@ class Tetromino {
       int new_x = c_x + new_dx;
       int new_y = c_y + new_dy;      
       
-        if (new_x < 0 || new_x / b_size >= grid[0].length || grid[new_y/ b_size][new_x/ b_size].c != 0) return;
+      if (new_x < startingX || new_x / b_size >= endingX || grid[new_y/ b_size][new_x/ b_size - startingX].c != 0) return;
       
       newXValues[i] = new_x;
       newYValues[i] = new_y;
@@ -106,9 +107,9 @@ class Tetromino {
       int x = (blocks[i].x / b_size) + dx;
       int y = (blocks[i].y / b_size) + dy;
       //System.out.println(dy + ", " + x + ", " + y);
-      if (x >= 0 && x < 10 && y < grid.length) {
+      if (x >= startingX && x < endingX && y < grid.length) {
         // System.out.println("true");
-        if (grid[y][x].c != 0) {
+        if (grid[y][x-startingX].c != 0) {
           return false;
         }
       }
@@ -176,7 +177,7 @@ class Tetromino {
       blocksCopy[i] = blocks[i].copy();
     }
 
-    return new Tetromino(tetrominoType, b_size, t_color, grid, blocksCopy);
+    return new Tetromino(tetrominoType, t_color, grid, blocksCopy);
   }
 
   void setHighlight(boolean value) {

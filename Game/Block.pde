@@ -33,7 +33,7 @@ class Block {
         strokeC = color(r, g, b);
       }
 
-      if (x / size >= 10) {
+      if (x / size >= endingX) {
         if (c != 0) {
           strokeWeight(3);
         }
