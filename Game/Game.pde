@@ -24,11 +24,20 @@
     
     dropCounter = 0; 
     dropInterval = 60;
+
     level = 0;
+    score = 0;
+
+    grayRows = 0;
+    grayTicks = 0;
+
+    lastPoint = 0;
+   
     levelChange = false;
     isGameOver = false;
-    grayRows = 0;
     holdingSpace = false;
+    grayMode = false;
+    fastRotateMode = false;
   }
   
   void draw() {
@@ -84,6 +93,7 @@
   
   void keyPressed() {
     if (key == CODED) {
+      if (isGameOver) return;
       
       if (keyCode == LEFT) {
         board.currentTetro.moveLeft();
@@ -96,16 +106,22 @@
       } else if (keyCode == UP) {
         board.currentTetro.rotate();
       }
-    } else {
+    }
+    else {
+
+      if (isGameOver) {
+        if (key == 'r' || key == 'R') setup();
+        return;
+      }
       
       if (key == 'c' || key == 'C') {
         board.lockPiece();
       }
-      if (key == 'T' || key == 't') {
-        grayRows--;
-        board.grayRow(grayRows, true);
+      // if (key == 'T' || key == 't') {
+      //   grayRows--;
+      //   board.grayRow(grayRows, true);
 
-      }
+      // }
       if (key == 'g' || key == 'G') {
         grayMode = !grayMode;
       }
@@ -116,12 +132,7 @@
         holdingSpace = true;
         board.allDownAndHighlight(true);
       }
-      else if (isGameOver && key == 'r' || key == 'R'){
-       setup();
-       isGameOver = false;
-       level = 0;
-       grayRows = 0;
-      }
+      
     } 
   }
   void keyReleased() {

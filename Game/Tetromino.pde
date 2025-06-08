@@ -95,7 +95,6 @@ class Tetromino {
     if (fastRotateMode){
       moveDown();
       moveDown();
-      moveDown();
     }
   }
 
