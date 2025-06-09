@@ -14,6 +14,7 @@ class ScoreManager {
           if (grayRows > 0) grayRows--;
           board.removeGrayRow(grayRows);
       }
+      levelChange = true;
       // else{
       //   levelChange = true;
       //   if (level >= 1) {

@@ -42,6 +42,7 @@
 
     level = 0;
     score = 0;
+    linesCleared = 0;
 
     grayRows = 0;
     grayTicks = 0;
@@ -138,18 +139,16 @@
     }
     else {
 
-      // if (isGameOver) {
+      if (isGameOver) {
         if (key == 'r' || key == 'R') setup();
-        // return;
-      // }
+        return;
+      }
       
       if (key == 'c' || key == 'C') {
         board.lockPiece();
       }
       // if (key == 'T' || key == 't') {
-      //   grayRows--;
-      //   board.grayRow(grayRows, true);
-
+      //   score = 5000;
       // }
       if (key == 'g' || key == 'G') {
         grayMode = !grayMode;
