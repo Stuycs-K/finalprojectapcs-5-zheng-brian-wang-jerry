@@ -25,11 +25,7 @@
   static boolean fastRotateMode = false;
   static boolean inverseMode = false;
 
-  
 
-
-
-  
   void setup() {
     size(950, 1000);
     frameRate(60);
@@ -78,11 +74,6 @@
       dropInterval = (int) (60 * (Math.pow((0.8-((level-1)*0.007)), level - 1)));
       levelChange = false;
     }
-    
-    //for (int i = 0; i < level; i++) {
-    //  dropInterval *= 0.9;
-    //}
-    //frameRate(60 + (level * 20));
       
     if (isGameOver) {
       scoreManager.display();
@@ -102,7 +93,7 @@
       dropCounter = 0;
     }
     dropCounter++;
-    //board.placeAtBottom();
+
     board.update();
     board.drawBoard();
     scoreManager.display();
@@ -148,9 +139,6 @@
       if (key == 'c' || key == 'C') {
         board.lockPiece();
       }
-      // if (key == 'T' || key == 't') {
-      //   score = 5000;
-      // }
       if (key == 'g' || key == 'G') {
         grayMode = !grayMode;
       }

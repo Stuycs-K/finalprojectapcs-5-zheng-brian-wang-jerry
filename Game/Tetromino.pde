@@ -37,7 +37,6 @@ class Tetromino {
     }
     c_x*=scale;
     c_y*=scale;
-    // int[][] starting_centers = new int[][] {{10, 2}, {9, 3},{9, 3}, {10, 2}, {9, 3}, {9, 3}, {9, 3}}
 
     int[][][] offsets = {
       {{-3, -1}, {-1 ,-1}, {1, -1}, {3, -1}}, // straight
@@ -69,8 +68,7 @@ class Tetromino {
     int[] newYValues = new int[4];
     
     for (int i = 0; i < blocks.length; i++) {
-    //  System.out.println("Before: " + blocks[i].x + " " + blocks[i].y); 
-    //  System.out.println("Center: " + c_x + " " + c_y); 
+
       int dx = blocks[i].x - c_x;
       int dy = (blocks[i].y - c_y);
   
@@ -80,13 +78,11 @@ class Tetromino {
       int new_x = c_x + new_dx;
       int new_y = c_y + new_dy;      
       
-      if (new_x < startingX || new_x / b_size >= endingX) return;
+      if (new_x < startingX || new_x / b_size >= endingX || new_y/blockLength >= grid.length) return;
       if (grid[new_y/ b_size][new_x/ b_size - startingX].c != 0) return;
       
       newXValues[i] = new_x;
       newYValues[i] = new_y;
-
-      // System.out.println("After: " + blocks[i].x + " " + blocks[i].y);
 
     }
     for (int i = 0; i < 4; i++) {
@@ -107,16 +103,13 @@ class Tetromino {
       
       int x = (blocks[i].x / b_size) + dx;
       int y = (blocks[i].y / b_size) + dy;
-      //System.out.println(dy + ", " + x + ", " + y);
+
       if (x >= startingX && x < endingX && y < grid.length) {
-        // System.out.println("true");
         if (grid[y][x-startingX].c != 0) {
           return false;
         }
       }
       else {
-        // System.out.println("bad");  
-      //  System.out.println("false" + x + ", " + y + "dx: " + dx + " dy: " + dy); 
         return false;
       }
     }
@@ -134,7 +127,6 @@ class Tetromino {
       return 1;
     }
     if (!result) {
-      //System.out.println(2);
       return 2;
     }
     this.c_x += dx * b_size;
@@ -156,7 +148,7 @@ class Tetromino {
     return move(0, 1);
   }
 
-  // ignore grid
+  // ignores grid restrictions
   void moveTo(double x, double y) { 
     int dx = (int) (x*b_size) - c_x;
     int dy = (int) (y*b_size) - c_y;
@@ -194,8 +186,4 @@ class Tetromino {
       this.blocks[i] = b[i].copy();
     }
   }
-
-  
-  
-  
 }

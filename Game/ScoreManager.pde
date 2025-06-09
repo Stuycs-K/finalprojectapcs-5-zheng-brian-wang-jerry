@@ -15,13 +15,6 @@ class ScoreManager {
           board.removeGrayRow(grayRows);
       }
       levelChange = true;
-      // else{
-      //   levelChange = true;
-      //   if (level >= 1) {
-      //     grayRows++;
-      //     board.grayRow(grayRows);
-      //   }
-      // }
     }
   }
 
@@ -62,12 +55,6 @@ class ScoreManager {
     text("INVERSE", middle, height/2 + 11*tSize + tSize/2);
     drawSwitch(inverseMode, height/2 + 12*tSize + tSize/2);
 
-  // if (fastRotateMode){
-    //   text("FAST ROTATE MODE: ON", 10, 80);
-    // }
-    // else{
-    //   text("FAST ROTATE MODE: OFF", 10, 80);
-    // }
   }
 
   void drawSwitch(boolean on, int startingHeight) {
@@ -96,13 +83,5 @@ class ScoreManager {
     line(middle, startingHeight + 3, middle, startingHeight + 3*tSize/2 - 2.5);
 
     fill(255);
-
-
-    // if (on) {
-    //   rect(tSize/2, height/2 + 2*tSize + tSize/2, );
-    // }
-    // else {
-    //   rect(tSize/2, height/2 + 2*tSize + tSize/2, );
-    // }
   }
 }

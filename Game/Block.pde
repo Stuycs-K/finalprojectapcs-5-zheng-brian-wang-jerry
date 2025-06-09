@@ -13,8 +13,8 @@ class Block {
   void drawBlock() {
     strokeWeight(1);
     int strokeC = 50;
-    // if (x / size == 10) strokeWeight(10);
-    if (highlight) {
+
+    if (highlight) { // thicker outline for tetro
       strokeWeight(3);
       strokeC = color(210, 210, 210);
     }
@@ -25,11 +25,10 @@ class Block {
         float g = green(c);
         float b = blue(c);
 
-        r *= (1.0 / 1.5);
+        r *= (1.0 / 1.5); // darker shade as outline for all tetro
         g *= (1.0 / 1.5);
         b *= (1.0 / 1.5); 
 
-        // System.out.println(r + ", " + g + ", " + b);
         strokeC = color(r, g, b);
       }
 
@@ -40,8 +39,6 @@ class Block {
         else strokeC = c;
       }
     }
-    
-    
 
     fill(c);
     stroke(strokeC);  
@@ -52,13 +49,12 @@ class Block {
     this.c = c;
   }
 
-  
-  void move(int dx, int dy) {
+  void move(int dx, int dy) { // dx and dy are in pixels
     x += dx;
     y += dy;
   }
 
-  void moveTo(int x, int y) {
+  void moveTo(int x, int y) { // x and y are in blockLength units
     this.x = x*size;
     this.y = y*size;
   }
