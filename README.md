@@ -19,12 +19,20 @@ Inverse Movement: Ever autopilot the first few minutes of Tetris because its too
 Keybinds:
 
 R: Restart game (only after losing a game)
+
 Left and Right keys: move tetronimo left or right
+
 Up key: Rotate tetronimo clockwise 90 degrees
+
 Down key: Shift tetronimo down quickly
+
 Space key: Forces tetronimo to lowest possible position
+
 G key: Toggle Rising Tides mode
+
 F key: Toggle Fast Rotate mode
+
 I key: Toggle Inverse Movement mode
+
 
 Video: [Demo](https://drive.google.com/file/d/1SaAGlwC3LbaDVZZGcK8loaCMVHe4kmM3/view?usp=sharing)
