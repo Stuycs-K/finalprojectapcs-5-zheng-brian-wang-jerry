@@ -72,6 +72,14 @@ Changed the window size from 500x1000 to 700x1000. Looped through the tetro of u
 ### 2025-06-02 - Displayed outline of where tetro will go
 Made a copy of the currentTetro and moved that copy all the way down. This tetroCopy was drawn using lighter colors and border. A highlight instance variable needed to be added to Block for a lighter outline, and setBlocks() was created for Tetro to make sure tetroCopy followed rotations. - 45 min
 
+### 2025-06-03 - Fix tetro generation and adjusted outline
+Added new instance variable of Board called tetroTypes. Updated makeRandoTetro such that it will fill tetroTypes with numbers 0-6 when it is empty, and when it is not, a tetro with a random type with be generated, and that type will be removed from tetroType. This ensures that all 7 tetro will be used until they repeat. If highlight is true for a block, it will have a strokeWeight of 4. Blocks belonging to an upcoming tetro will have an outline that is a darker shade of its color. - 35 min
+
+### 2025-06-04 - 
+
+
+
+
 
 
 

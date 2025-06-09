@@ -14,13 +14,13 @@ class ScoreManager {
           if (grayRows > 0) grayRows--;
           board.removeGrayRow(grayRows);
       }
-      else{
-        levelChange = true;
-        if (level >= 1) {
-          grayRows++;
-          board.grayRow(grayRows);
-        }
-      }
+      // else{
+      //   levelChange = true;
+      //   if (level >= 1) {
+      //     grayRows++;
+      //     board.grayRow(grayRows);
+      //   }
+      // }
     }
   }
 
@@ -57,6 +57,9 @@ class ScoreManager {
 
     text("FAST ROTATE", middle, height/2 + 6*tSize + tSize/2);
     drawSwitch(fastRotateMode, height/2 + 7*tSize + tSize/2);
+
+    text("INVERSE", middle, height/2 + 11*tSize + tSize/2);
+    drawSwitch(inverseMode, height/2 + 12*tSize + tSize/2);
 
   // if (fastRotateMode){
     //   text("FAST ROTATE MODE: ON", 10, 80);
