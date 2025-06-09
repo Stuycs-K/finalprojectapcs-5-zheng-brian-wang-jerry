@@ -49,5 +49,8 @@ Fixed most of grayRows (one main issue with shifting down after grayRows were cr
 ### 2025-06-05 -  Started on new grayRows-based gamemode.
 Started and finished new gamemode, where eveything works except shifting down after grayRows get removed. ~1.5 hours
 
-### 2025-06-03 -  Started second gamemode and documentation
+### 2025-06-06 -  Started second gamemode and documentation
 Wrote a "Fast Rotate" gamemode and started on READMe documentation. ~1.5 hours
+
+### 2025-06-08 -  Finished third gamemode and documentation
+Wrote the" "Inverse Movement" gamemode, as well as finished READMe documentation for our project. ~2 hours
