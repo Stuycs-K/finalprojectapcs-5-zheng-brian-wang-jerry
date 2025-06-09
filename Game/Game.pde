@@ -54,6 +54,7 @@
     holdingSpace = false;
     grayMode = false;
     fastRotateMode = false;
+    inverseMode = false;
 
     strokeCap(SQUARE);
   }
