@@ -66,6 +66,49 @@ git checkout main
 git merge --no-ff MVP
 - 5 min
 
+### 2025-06-02 - Wrote code to display next 3 tetro
+Changed the window size from 500x1000 to 700x1000. Looped through the tetro of upComingTetro in drawBoard(), and drew them in that newly created right hand section by moving them right and (if necessary) down. Assigned blocks in grid a color if j >= 10 to make the right hand section apparent, and drew a thick line down x=500 to act as a border. - 35 min
+
+### 2025-06-02 - Displayed outline of where tetro will go
+Made a copy of the currentTetro and moved that copy all the way down. This tetroCopy was drawn using lighter colors and border. A highlight instance variable needed to be added to Block for a lighter outline, and setBlocks() was created for Tetro to make sure tetroCopy followed rotations. - 45 min
+
+### 2025-06-03 - Fix tetro generation and adjusted outline
+Added new instance variable of Board called tetroTypes. Updated makeRandoTetro such that it will fill tetroTypes with numbers 0-6 when it is empty, and when it is not, a tetro with a random type with be generated, and that type will be removed from tetroType. This ensures that all 7 tetro will be used until they repeat. If highlight is true for a block, it will have a strokeWeight of 4. Blocks belonging to an upcoming tetro will have an outline that is a darker shade of its color. - 35 min
+
+### 2025-06-04 - Tried to fix positioning of held tetro
+Wrote a moveTo method for Blocks and Tetromino. Called this method on a copy of heldTetro to move it to the bottom right corner. Made a new constructor for Tetromino that takes in a Block[] blocks, used this contructor for the copy() method for Tetromino. copy() was also edited to make a blocksCopy[] of blocks[] by calling copy() on each Block. - 35 min.
+
+### 2025-06-04 - More tweaking of upcoming/held tetro positions. Adjusted tetro offsets.
+After observing tetr.io, realized that some of the centers of rotation for our tetro were wrong, namely for the straight, square, and left and right zigzag pieces. Thus, the offsets in initializeBlocks() were adjusted. Also updated initializeBlocks() to intialize c_x to 9 and c_y to 3,  or to 10 and 2 for the straight and square tetro. Adjusted the y value upcoming and held tetro would be placed if they were a straight or a square, becuase those have different center y values from the rest. - 55 min
+
+### 2025-06-04 - Aesthetic changes and fix held tetro
+Tweaked drawBlock() such that tetro inside the board will also have a border color of a darker shade of its color. Changed lockPiece() so that initializeBlocks() is called on heldTetro when taking in a tetro to reset it, and it is also called on a copy of currentTetro before being assigned to heldTetro. - 25 min
+
+### 2025-06-04 - Tweak fall down speed, detect holding space
+Created the instance variable holdingSpace that will be true when space is being held. Used keyReleased() to detect when holdingSpace becomes false. Only allows tetro to go all the way down when space is not being held, because holding space would have made many blocks go down way too fast and almost instantly lose the game. Also adjusted the dropInterval to use the official tetris formula for speed of tetro moving down. - 20 min
+
+### 2025-06-04 - Debug and fix gray blocks
+The error with gray blocks was due to the previous reworking of move() for moveTo(). It was fixed by changing the units from block units to pixels. Also only incremented grayRows if level is at least 5. - 25 min
+
+### 2025-06-06 - Fixed removing gray blocks
+Added the boolean parameter subtract to grayBlocks. Reused code from clearLine() to move the blocks down after a grayRow is removed. - 30 min
+
+### 2025-06-08 - Difficulty balancing and reset tweaks
+Fast rotate mode only makes rotate move down the tetro 2 blocks rather than 3. If isGameOver is true, keyPressed() will return after checking for r and R. - 10 min
+
+### 2025-06-08 - Moved stats to a seperate section on left
+Expanded the window to the left. Added variables startingX and endingX to mark the start and end of board. Fixed all the errors that followed regarding x values not being offset by startingX. Displayed the score, level, and lines cleared in the stats section. - 45 min
+
+### 2025-06-08 - Added switches to stats
+Made a seperate removeGrayRow() method instead of using a boolean parameter for grayRows. Wrote drawSwitch(), which draws a light grey outer rectangle outline, a filled in darker gray inner rectangle that covers half of the outer rectangle, a line dividing the outer rectangle in half, and the status of the mode (on/off). Toggling the mode causes the inner rectangle to switch the half of the outer rectangle its on, acting as a switch. Added switches for all 3 modes - 80 min
+
+### 2025-06-08 - Changes for recording
+Allowed for reseting the game at any time during the game for convenience, and made T give the user 5000 score. These changes were reverted after the video was recorded. - 15 min
+
+### 2025-06-08 - Clean code and merge
+Deleted useless comments of previous code, added clarifying comments, and merged the code into main - 20 min.
+
+
 
 
 

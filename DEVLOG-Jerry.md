@@ -36,3 +36,21 @@ Added a game over screen, and fixed redundant code to allow smooth replaying exp
 
 ### 2025-05-30 -  Overall bugfixes.
 Read and made sure code was valid, as well as tying up loose ends for the project overall. ~1 hour
+
+### 2025-06-02 -  Started on grayRows method.
+Overall bugfixes, as well as starting on extra "floor is lava" or grayRows methods. ~ 1 hour
+
+### 2025-06-03 -  finished basic grayRows method.
+Got grayRows to work with one notable bug, which can be fixed later. Noticed lock could be fixed (visual bug only). ~1.5 hours
+
+### 2025-06-04 -  tried to fix grayRows method.
+Fixed most of grayRows (one main issue with shifting down after grayRows were created). ~1 hour
+
+### 2025-06-05 -  Started on new grayRows-based gamemode.
+Started and finished new gamemode, where eveything works except shifting down after grayRows get removed. ~1.5 hours
+
+### 2025-06-06 -  Started second gamemode and documentation
+Wrote a "Fast Rotate" gamemode and started on READMe documentation. ~1.5 hours
+
+### 2025-06-08 -  Finished third gamemode and documentation
+Wrote the" "Inverse Movement" gamemode, as well as finished READMe documentation for our project. ~2 hours
