@@ -54,3 +54,5 @@ Wrote a "Fast Rotate" gamemode and started on READMe documentation. ~1.5 hours
 
 ### 2025-06-08 -  Finished third gamemode and documentation
 Wrote the" "Inverse Movement" gamemode, as well as finished READMe documentation for our project. ~2 hours
+
+I believe this document accurately reflects the contributions of my teammate - Brian
