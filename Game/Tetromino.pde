@@ -28,7 +28,7 @@ class Tetromino {
     this.blocks = new Block[4];
     double scale = b_size / 2.0;
 
-    this.c_x = 9 + startingX;
+    this.c_x = 9 + 2*startingX;
     this.c_y = 3;
 
     if (tetrominoType == 0 || tetrominoType == 3) {
@@ -80,7 +80,7 @@ class Tetromino {
       int new_x = c_x + new_dx;
       int new_y = c_y + new_dy;      
       
-      if (new_x-startingX*blockLength < 0 || new_x / b_size >= endingX) return;
+      if (new_x < startingX || new_x / b_size >= endingX) return;
       if (grid[new_y/ b_size][new_x/ b_size - startingX].c != 0) return;
       
       newXValues[i] = new_x;

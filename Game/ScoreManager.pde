@@ -83,7 +83,7 @@ class ScoreManager {
     if (on) {
       rect(middle+5, startingHeight+5, 2*tSize-10, 3*tSize/2-10);
       fill(color(0, 255, 0));
-      text("ON", middle + tSize, startingHeight + tSize);
+      text("ON", middle + tSize, startingHeight + tSize+2.5);
     }
     else {
       rect(middle-2*tSize+5, startingHeight+5, 2*tSize-10, 3*tSize/2-10);

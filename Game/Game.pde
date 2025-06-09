@@ -83,12 +83,14 @@
     //frameRate(60 + (level * 20));
       
     if (isGameOver) {
+      scoreManager.display();
+
       fill(255, 0, 0);
       textAlign(CENTER, CENTER);
       textSize(48);
-      text("GAME OVER", width / 2, height / 2 - 50);
+      text("GAME OVER", (width+startingX*blockLength) / 2, height / 2 - 50);
       textSize(24);
-      text("Press R to Restart", width / 2, height / 2 + 10);
+      text("Press R to Restart", (width+startingX*blockLength) / 2, height / 2 + 10);
       return;
     }
     
@@ -136,10 +138,10 @@
     }
     else {
 
-      if (isGameOver) {
+      // if (isGameOver) {
         if (key == 'r' || key == 'R') setup();
-        return;
-      }
+        // return;
+      // }
       
       if (key == 'c' || key == 'C') {
         board.lockPiece();
