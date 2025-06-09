@@ -108,6 +108,8 @@ Allowed for reseting the game at any time during the game for convenience, and m
 ### 2025-06-08 - Clean code and merge
 Deleted useless comments of previous code, added clarifying comments, and merged the code into main - 20 min.
 
+I believe this document accurately reflects the contributions of my teammate - Jerry Wang
+
 
 
 
